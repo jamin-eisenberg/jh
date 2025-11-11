@@ -2,6 +2,10 @@ module Main exposing (main)
 
 import Browser
 import Html exposing (Html)
+import Html.Attributes
+import Svg
+import Svg.Attributes exposing (height, width, xlinkHref)
+import Svg.Events
 
 
 type alias Model =
@@ -36,4 +40,22 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    Html.text "Hi"
+    Html.div [ Html.Attributes.class "svg-container" ]
+        [ Svg.svg
+            [ width "812px"
+            , height "1815px"
+            ]
+            [ Svg.image
+                [ xlinkHref "images/796-812x1815.jpg"
+                ]
+                []
+            , Svg.rect
+                [ width "50px"
+                , height "50px"
+                , Svg.Attributes.stroke "red"
+                , Svg.Attributes.fillOpacity "0"
+                , Svg.Events.onClick NoOp
+                ]
+                []
+            ]
+        ]
