@@ -1,8 +1,8 @@
-module Main exposing (main)
+port module Main exposing (main)
 
 import Browser
-import Html exposing (Html)
-import Html.Attributes
+import Html exposing (Html, button, div, h1, text)
+import Html.Attributes exposing (attribute, class, id, tabindex, type_)
 import Svg
 import Svg.Attributes exposing (height, width, xlinkHref)
 import Svg.Events
@@ -12,8 +12,21 @@ type alias Model =
     {}
 
 
+type Icon
+    = Square
+
+
 type Msg
-    = NoOp
+    = IconClicked Icon
+
+
+type alias ModalMessage =
+    { id : String
+    , shouldOpen : Bool
+    }
+
+
+port send : ModalMessage -> Cmd msg
 
 
 main : Program () Model Msg
@@ -34,8 +47,8 @@ init flags =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NoOp ->
-            ( model, Cmd.none )
+        IconClicked _ ->
+            ( model, send { id = "myModal", shouldOpen = True } )
 
 
 view : Model -> Html Msg
@@ -54,8 +67,19 @@ view model =
                 , height "50px"
                 , Svg.Attributes.stroke "red"
                 , Svg.Attributes.fillOpacity "0"
-                , Svg.Events.onClick NoOp
+                , Svg.Events.onClick (IconClicked Square)
                 ]
                 []
+            ]
+        , div [ class "modal", id "myModal", tabindex -1 ]
+            [ div [ class "modal-dialog" ]
+                [ div [ class "modal-content" ]
+                    [ div [ class "modal-header" ]
+                        [ h1 [ class "modal-title fs-5", id "myModalLabel" ]
+                            [ text "Modal title" ]
+                        , button [ type_ "button", class "btn-close", attribute "data-bs-dismiss" "modal" ] []
+                        ]
+                    ]
+                ]
             ]
         ]
