@@ -51,7 +51,7 @@
     app.ports.send.subscribe(function ({ id, shouldOpen }) {
         console.log(id);
         console.log(shouldOpen);
-        const modal = new bootstrap.Modal(`#${id}`, options);
+        const modal = new bootstrap.Modal(`#${id}`, {});
         console.log(modal);
         if (shouldOpen) {
             modal.show();
