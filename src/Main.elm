@@ -77,7 +77,7 @@ viewHitbox story =
 viewModal : Story -> Html Msg
 viewModal story =
     div [ class "modal", id (modalId story), tabindex -1 ]
-        [ div [ class "modal-dialog" ]
+        [ div [ class "modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen" ]
             [ div [ class "modal-content" ]
                 [ div [ class "modal-header" ]
                     [ img [ src ("images/" ++ story.iconImageName), style "height" "2.5em", style "margin-right" "1em" ] []

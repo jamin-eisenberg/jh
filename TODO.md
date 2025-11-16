@@ -6,3 +6,5 @@
 - image hosting on cloudinary
 - test that all referenced icons and images are present in images/ (or on Cloudinary)
 - preprocess hitbox coordinates and save all as icons (python script)
+- bug: can scroll right out of modal (and modal is not fully on-screen if you're scrolled to begin with)
+- make SPA and eliminate modals
