@@ -8,3 +8,4 @@
 - preprocess hitbox coordinates and save all as icons (python script)
 - bug: can scroll right out of modal (and modal is not fully on-screen if you're scrolled to begin with)
 - make SPA and eliminate modals
+- story ID page should not have to handle maybe story

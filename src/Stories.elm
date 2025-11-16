@@ -1,4 +1,4 @@
-module Stories exposing (Stories, map, selectStoryByModalId, stories)
+module Stories exposing (Stories, initialStories, map, selectStoryByModalId)
 
 import Array exposing (Array)
 import Date
@@ -6,8 +6,8 @@ import Story
 import Time
 
 
-stories : Stories
-stories =
+initialStories : Stories
+initialStories =
     Stories
         (Array.fromList
             [ { iconImageName = "796-812x1815.jpg"
@@ -30,8 +30,8 @@ type Stories
     = Stories (Array Story.Story)
 
 
-selectStoryByModalId : String -> Maybe Story.Story
-selectStoryByModalId modalId =
+selectStoryByModalId : String -> Stories -> Maybe Story.Story
+selectStoryByModalId modalId stories =
     let
         (Stories ss) =
             stories
@@ -41,8 +41,8 @@ selectStoryByModalId modalId =
         |> Array.get 0
 
 
-map : (Story.Story -> a) -> List a
-map f =
+map : (Story.Story -> a) -> Stories -> List a
+map f stories =
     let
         (Stories ss) =
             stories
