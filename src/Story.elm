@@ -23,8 +23,3 @@ modalId { title } =
 
 isWhitespace c =
     List.member c [ ' ', '\t', '\n', '\u{000D}' ]
-
-
-
--- TODO make sure all referenced icons and images are present in images/
--- TODO preprocess hitbox coordinates and save all as icons

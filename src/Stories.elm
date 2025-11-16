@@ -26,10 +26,6 @@ stories =
         )
 
 
-
--- TODO test rawStories has no duplicate icons
-
-
 type Stories
     = Stories (Array Story.Story)
 

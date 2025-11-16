@@ -1,0 +1,8 @@
+- limit zoom and prevent landscape
+- size background image against viewport
+- test rawStories has no duplicate icons
+- increase text size on zoom in modal?
+- open image alone on tap, then can zoom from there?
+- image hosting on cloudinary
+- test that all referenced icons and images are present in images/ (or on Cloudinary)
+- preprocess hitbox coordinates and save all as icons (python script)

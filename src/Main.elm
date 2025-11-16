@@ -49,15 +49,10 @@ update msg model =
             ( model, send { id = storyModalId, shouldOpen = True } )
 
 
-
--- TODO limit zoom and prevent landscape
-
-
 view : Model -> Html Msg
 view model =
     Html.div [ Html.Attributes.class "svg-container" ]
         (Svg.svg [ width "812px", height "1815px" ]
-            -- TODO size against viewport
             (Svg.image [ xlinkHref "images/796-812x1815.jpg" ] []
                 :: Stories.map viewHitbox
             )
