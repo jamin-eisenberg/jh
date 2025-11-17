@@ -1,4 +1,4 @@
-module Story exposing (Story, modalId)
+module Story exposing (Story, storyId)
 
 import Date exposing (Date)
 
@@ -16,8 +16,8 @@ type alias Rect =
     { x : Int, y : Int, width : Int, height : Int }
 
 
-modalId : Story -> String
-modalId { title } =
+storyId : Story -> String
+storyId { title } =
     String.filter (not << isWhitespace) title
 
 

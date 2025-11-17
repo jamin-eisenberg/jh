@@ -1,11 +1,9 @@
 - limit zoom and prevent landscape
 - size background image against viewport
 - test rawStories has no duplicate icons
-- increase text size on zoom in modal?
+- increase text size on zoom on story page?
 - open image alone on tap, then can zoom from there?
 - image hosting on cloudinary
 - test that all referenced icons and images are present in images/ (or on Cloudinary)
 - preprocess hitbox coordinates and save all as icons (python script)
-- bug: can scroll right out of modal (and modal is not fully on-screen if you're scrolled to begin with)
-- make SPA and eliminate modals
 - story ID page should not have to handle maybe story

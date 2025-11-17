@@ -1,23 +1,21 @@
 module Pages.Home_ exposing (page)
 
-import Browser
 import ElmSpa.Page exposing (Page)
 import Gen.Route
-import Html exposing (Html, button, div, h1, img, text)
-import Html.Attributes exposing (attribute, class, href, id, src, style, tabindex, type_)
+import Html
+import Html.Attributes
 import Page exposing (Page)
 import Request
 import Shared
 import Stories
-import Story exposing (Story, modalId)
+import Story exposing (Story, storyId)
 import Svg
 import Svg.Attributes exposing (height, width, x, xlinkHref, y)
-import Svg.Events
 import View exposing (View)
 
 
 page : Shared.Model -> Request.With () -> Page
-page shared req =
+page shared _ =
     Page.static
         { view = view shared.stories
         }
@@ -39,7 +37,7 @@ view stories =
 
 viewHitbox : Story -> Svg.Svg msg
 viewHitbox story =
-    Svg.a [ Svg.Attributes.xlinkHref (Gen.Route.toHref (Gen.Route.Story__Id_ { id = modalId story })) ]
+    Svg.a [ Svg.Attributes.xlinkHref (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId story })) ]
         [ Svg.rect
             [ width (inPx story.hitbox.width)
             , height (inPx story.hitbox.height)

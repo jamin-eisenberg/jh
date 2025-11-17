@@ -2,12 +2,12 @@ module Pages.Story.Id_ exposing (page)
 
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
-import Html exposing (a, button, div, h1, hr, img, p, text)
-import Html.Attributes exposing (class, href, src, style, type_)
+import Html exposing (a, div, hr, img, p, text)
+import Html.Attributes exposing (class, href, src, style)
 import Page exposing (Page)
 import Request
 import Shared
-import Stories exposing (Stories)
+import Stories
 import Story exposing (Story)
 import View exposing (View)
 
@@ -15,7 +15,7 @@ import View exposing (View)
 page : Shared.Model -> Request.With Params -> Page
 page shared req =
     Page.static
-        { view = view (Stories.selectStoryByModalId req.params.id shared.stories)
+        { view = view (Stories.selectStoryById req.params.id shared.stories)
         }
 
 

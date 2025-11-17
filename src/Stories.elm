@@ -1,4 +1,4 @@
-module Stories exposing (Stories, initialStories, map, selectStoryByModalId)
+module Stories exposing (Stories, initialStories, map, selectStoryById)
 
 import Array exposing (Array)
 import Date
@@ -30,14 +30,14 @@ type Stories
     = Stories (Array Story.Story)
 
 
-selectStoryByModalId : String -> Stories -> Maybe Story.Story
-selectStoryByModalId modalId stories =
+selectStoryById : String -> Stories -> Maybe Story.Story
+selectStoryById storyId stories =
     let
         (Stories ss) =
             stories
     in
     ss
-        |> Array.filter (\story -> modalId == Story.modalId story)
+        |> Array.filter (\story -> storyId == Story.storyId story)
         |> Array.get 0
 
 
