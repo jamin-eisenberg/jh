@@ -1,10 +1,12 @@
 module Pages.Story.Id_ exposing (page)
 
+import Browser.Dom exposing (Error(..))
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
 import Html exposing (a, div, hr, img, p, text)
 import Html.Attributes exposing (class, href, src, style)
 import Page exposing (Page)
+import Pages.NotFound as NotFound
 import Request
 import Shared
 import Stories
@@ -23,7 +25,7 @@ view : Maybe Story -> View msg
 view maybeStory =
     case maybeStory of
         Nothing ->
-            { title = "Story not found", body = [] }
+            NotFound.view
 
         Just story ->
             { title = "JH - " ++ story.title

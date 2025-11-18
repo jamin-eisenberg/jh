@@ -11,7 +11,7 @@ initialStories =
     Stories
         (Array.fromList
             [ { iconImageName = "796-812x1815.jpg"
-              , title = "Square"
+              , title = "Squ are#"
               , description = "Square description"
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
               , hitbox = { x = 0, y = 50, width = 50, height = 50 }

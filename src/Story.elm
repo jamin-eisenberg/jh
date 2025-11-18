@@ -1,6 +1,7 @@
 module Story exposing (Story, storyId)
 
 import Date exposing (Date)
+import Url
 
 
 type alias Story =
@@ -18,7 +19,7 @@ type alias Rect =
 
 storyId : Story -> String
 storyId { title } =
-    String.filter (not << isWhitespace) title
+    Url.percentEncode (String.filter (not << isWhitespace) title)
 
 
 isWhitespace c =

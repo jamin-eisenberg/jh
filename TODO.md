@@ -6,4 +6,3 @@
 - image hosting on cloudinary
 - test that all referenced icons and images are present in images/ (or on Cloudinary)
 - preprocess hitbox coordinates and save all as icons (python script)
-- story ID page should not have to handle maybe story
