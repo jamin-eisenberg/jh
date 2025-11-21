@@ -30,7 +30,7 @@ view maybeStory =
         Just story ->
             { title = "JH - " ++ story.title
             , body =
-                [ div [ class "fixed-top" ]
+                [ div [ class "sticky-top" ]
                     [ div [ class "d-flex flex-row align-items-center w-100 p-2" ]
                         [ img [ src ("/images/" ++ story.iconImageName), style "height" "2.5em", style "margin-right" "1em" ] []
                         , p [ class "fs-1 m-0" ] [ text story.title ]
@@ -38,6 +38,6 @@ view maybeStory =
                         ]
                     , hr [ class "mx-2 mt-0 mb-2" ] []
                     ]
-                , p [ class "m-2", style "padding-top" "68px" ] [ text story.description ]
+                , p [ style "overflow" "auto", class "h-100" ] [ text story.description ]
                 ]
             }

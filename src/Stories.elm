@@ -2,6 +2,7 @@ module Stories exposing (Stories, initialStories, map, selectStoryById)
 
 import Array exposing (Array)
 import Date
+import List exposing (repeat)
 import Story
 import Time
 
@@ -18,7 +19,7 @@ initialStories =
               }
             , { iconImageName = "796-812x1815.jpg"
               , title = "Circle"
-              , description = "Circle description"
+              , description = repeat 300 "Circle description" |> String.join ""
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
               , hitbox = { x = 100, y = 50, width = 50, height = 50 }
               }

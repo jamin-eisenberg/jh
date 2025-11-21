@@ -10,7 +10,7 @@ import Shared
 import Stories
 import Story exposing (Story, storyId)
 import Svg
-import Svg.Attributes exposing (height, width, x, xlinkHref, y)
+import Svg.Attributes exposing (class, height, width, x, xlinkHref, y)
 import View exposing (View)
 
 
@@ -25,7 +25,7 @@ view : Stories.Stories -> View Never
 view stories =
     { title = "JH"
     , body =
-        [ Html.div [ Html.Attributes.class "svg-container" ]
+        [ Html.div [ Html.Attributes.class "w-100 h-100" ]
             [ Svg.svg [ width "812px", height "1815px" ]
                 (Svg.image [ xlinkHref "images/796-812x1815.jpg" ] []
                     :: Stories.map viewHitbox stories
