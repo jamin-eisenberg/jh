@@ -1,6 +1,5 @@
 - limit zoom and prevent landscape (hmm, landscape only looks bad because of the current image size I think)
 - size background image against viewport (re-evaluate with actual image dims)
-- close button at footer (for long entries so they don't have to scroll to the top)
 - test rawStories has no duplicate icons
 - increase text size on zoom on story page?
 - open image alone on tap, then can zoom from there?

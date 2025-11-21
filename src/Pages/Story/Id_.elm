@@ -3,8 +3,8 @@ module Pages.Story.Id_ exposing (page)
 import Browser.Dom exposing (Error(..))
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
-import Html exposing (a, div, hr, img, p, text)
-import Html.Attributes exposing (class, href, src, style)
+import Html exposing (a, button, div, hr, img, p, text)
+import Html.Attributes exposing (class, height, href, src, style)
 import Page exposing (Page)
 import Pages.NotFound as NotFound
 import Request
@@ -38,6 +38,15 @@ view maybeStory =
                         ]
                     , hr [ class "mx-2 mt-0 mb-2" ] []
                     ]
-                , p [ style "overflow" "auto", class "h-100" ] [ text story.description ]
+                , div [ style "overflow" "auto", class "h-100" ]
+                    [ p [] [ text story.description ]
+                    , div [ style "height" "5em", class "w-100" ] []
+                    ]
+                , div [ class "fixed-bottom" ]
+                    [ div [ class "d-flex flex-row align-items-center w-100 p-2" ]
+                        [ a [ href (Gen.Route.toHref Gen.Route.Home_), class "ms-auto" ]
+                            [ button [ class "btn btn-secondary" ] [ text "Close" ] ]
+                        ]
+                    ]
                 ]
             }
