@@ -4,7 +4,7 @@ import Browser.Dom exposing (Error(..))
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
 import Html exposing (a, button, div, hr, img, p, text)
-import Html.Attributes exposing (class, height, href, src, style)
+import Html.Attributes exposing (class, href, src, style)
 import Page exposing (Page)
 import Pages.NotFound as NotFound
 import Request
