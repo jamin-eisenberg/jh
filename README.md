@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/834b5b7e-459e-4cd8-a563-a1557eb0e45c/deploy-status)](https://app.netlify.com/projects/jh-stories/deploys)
+
 # my new project
 > 🌳  built with [elm-spa](https://elm-spa.dev)
 
