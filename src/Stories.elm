@@ -13,13 +13,18 @@ initialStories =
         (Array.fromList
             [ { iconImageName = "796-812x1815.jpg"
               , title = "Squ are#"
-              , description = "Square description"
+              , description = [ Story.text "Square description", Story.image "796-812x1815.jpg" ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
               , hitbox = { x = 0, y = 50, width = 50, height = 50 }
               }
             , { iconImageName = "796-812x1815.jpg"
               , title = "Circle"
-              , description = repeat 300 "Circle description" |> String.join ""
+              , description =
+                    repeat 6
+                        (repeat 51 "Circle description"
+                            |> String.join ""
+                            |> Story.text
+                        )
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
               , hitbox = { x = 100, y = 50, width = 50, height = 50 }
               }
