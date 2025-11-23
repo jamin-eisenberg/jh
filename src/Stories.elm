@@ -20,11 +20,17 @@ initialStories =
             , { iconImageName = "796-812x1815.jpg"
               , title = "Circle"
               , description =
-                    repeat 6
+                    repeat 3
                         (repeat 51 "Circle description"
                             |> String.join ""
                             |> Story.text
                         )
+                        ++ [ Story.image "796-812x1815.jpg", Story.image "796-812x1815.jpg" ]
+                        ++ repeat 3
+                            (repeat 51 "Circle description"
+                                |> String.join ""
+                                |> Story.text
+                            )
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
               , hitbox = { x = 100, y = 50, width = 50, height = 50 }
               }

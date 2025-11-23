@@ -51,7 +51,7 @@ viewDescriptionContent descriptionContents =
                         Html.p [] [ Html.text desc ]
 
                     Image filename ->
-                        Html.img [ src (imagePath filename), class "w-100" ] []
+                        Html.img [ src (imagePath filename), class "w-100 my-2" ] []
             )
             descriptionContents
         )
