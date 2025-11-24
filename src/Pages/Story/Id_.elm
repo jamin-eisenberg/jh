@@ -51,7 +51,8 @@ view imageBasePath maybeStoryContext totalStories =
                     , div [ style "height" "8em", class "w-100" ] []
                     ]
                 , div [ class "fixed-bottom bg-white" ]
-                    [ div [ class "d-flex flex-row align-items-center w-100 p-2 fs-2" ]
+                    [ hr [ class "mx-2 mt-2 mb-0" ] []
+                    , div [ class "d-flex flex-row align-items-center w-100 p-2 fs-2" ]
                         [ viewStoryLink previous "end" (text "<")
                         , p [ class "mx-2 my-0 text-secondary flex-shrink-1" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
                         , viewStoryLink next "start" (text ">")
