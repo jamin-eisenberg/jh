@@ -51,31 +51,26 @@ view imageBasePath maybeStoryContext totalStories =
                     , div [ style "height" "5em", class "w-100" ] []
                     ]
                 , div [ class "fixed-bottom" ]
-                    [ div [ class "d-flex flex-row align-items-center w-100 p-2" ]
-                        [ div [ class "mx-auto fs-4 d-flex text-secondary" ]
-                            [ case previous of
-                                Nothing ->
-                                    Html.text ""
-
-                                Just prevStory ->
-                                    a
-                                        [ class "my-0 link-secondary link-underline link-underline-opacity-0"
-                                        , href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId prevStory }))
-                                        ]
-                                        [ text "<" ]
-                            , p [ class "mx-2 my-0" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
-                            , case next of
-                                Nothing ->
-                                    Html.text ""
-
-                                Just nextStory ->
-                                    a
-                                        [ class "my-0 link-secondary link-underline link-underline-opacity-0"
-                                        , href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId nextStory }))
-                                        ]
-                                        [ text ">" ]
-                            ]
+                    [ div [ class "d-flex flex-row align-items-center w-100 p-2 fs-4" ]
+                        [ viewStoryLink previous "end" (text "<")
+                        , p [ class "mx-2 my-0 text-secondary flex-shrink-1" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
+                        , viewStoryLink next "start" (text ">")
                         ]
                     ]
                 ]
             }
+
+
+viewStoryLink maybeStory justify child =
+    div [ class ("d-flex flex-grow-1 justify-content-" ++ justify), style "flex-basis" "0" ]
+        [ case maybeStory of
+            Nothing ->
+                Html.text ""
+
+            Just story ->
+                a
+                    [ class "my-0 link-secondary link-underline link-underline-opacity-0"
+                    , href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId story }))
+                    ]
+                    [ child ]
+        ]
