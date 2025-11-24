@@ -1,4 +1,4 @@
-module Story exposing (DescriptionContent, Story, image, imagePath, storyId, text, viewDescriptionContent)
+module Story exposing (DescriptionContent, Story, image, storyId, text, viewDescriptionContent)
 
 import Date exposing (Date)
 import Html exposing (Html)
@@ -41,8 +41,8 @@ isWhitespace c =
     List.member c [ ' ', '\t', '\n', '\u{000D}' ]
 
 
-viewDescriptionContent : List DescriptionContent -> Html msg
-viewDescriptionContent descriptionContents =
+viewDescriptionContent : String -> List DescriptionContent -> Html msg
+viewDescriptionContent imageBasePath descriptionContents =
     Html.div [ class "p-2" ]
         (List.map
             (\descriptionContent ->
@@ -51,12 +51,7 @@ viewDescriptionContent descriptionContents =
                         Html.p [] [ Html.text desc ]
 
                     Image filename ->
-                        Html.img [ src (imagePath filename), class "w-100 my-2" ] []
+                        Html.img [ src (imageBasePath ++ filename), class "w-100 my-2" ] []
             )
             descriptionContents
         )
-
-
-imagePath : String -> String
-imagePath filename =
-    "/images/" ++ filename

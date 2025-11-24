@@ -7,17 +7,18 @@ module Shared exposing
     , update
     )
 
-import Json.Decode as Json
 import Request exposing (Request)
 import Stories exposing (Stories)
 
 
 type alias Flags =
-    Json.Value
+    { imageBasePath : String }
 
 
 type alias Model =
-    { stories : Stories }
+    { stories : Stories
+    , imageBasePath : String
+    }
 
 
 type Msg
@@ -25,8 +26,8 @@ type Msg
 
 
 init : Request -> Flags -> ( Model, Cmd Msg )
-init _ _ =
-    ( { stories = Stories.initialStories }, Cmd.none )
+init _ { imageBasePath } =
+    ( { stories = Stories.initialStories, imageBasePath = imageBasePath }, Cmd.none )
 
 
 update : Request -> Msg -> Model -> ( Model, Cmd Msg )

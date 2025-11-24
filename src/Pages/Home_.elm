@@ -10,24 +10,24 @@ import Shared
 import Stories
 import Story exposing (Story, storyId)
 import Svg
-import Svg.Attributes exposing (class, height, width, x, xlinkHref, y)
+import Svg.Attributes exposing (height, width, x, xlinkHref, y)
 import View exposing (View)
 
 
 page : Shared.Model -> Request.With () -> Page
 page shared _ =
     Page.static
-        { view = view shared.stories
+        { view = view shared.stories shared.imageBasePath
         }
 
 
-view : Stories.Stories -> View Never
-view stories =
+view : Stories.Stories -> String -> View Never
+view stories imageBasePath =
     { title = "JH"
     , body =
         [ Html.div [ Html.Attributes.class "w-100 h-100" ]
             [ Svg.svg [ width "812px", height "1815px" ]
-                (Svg.image [ xlinkHref "images/796-812x1815.jpg" ] []
+                (Svg.image [ xlinkHref (imageBasePath ++ "SBD_2.0_Flow.png") ] []
                     :: Stories.map viewHitbox stories
                 )
             ]

@@ -17,12 +17,12 @@ import View exposing (View)
 page : Shared.Model -> Request.With Params -> Page
 page shared req =
     Page.static
-        { view = view (Stories.selectStoryById req.params.id shared.stories)
+        { view = view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories)
         }
 
 
-view : Maybe Story -> View msg
-view maybeStory =
+view : String -> Maybe Story -> View msg
+view imageBasePath maybeStory =
     case maybeStory of
         Nothing ->
             NotFound.view
@@ -32,14 +32,14 @@ view maybeStory =
             , body =
                 [ div [ class "sticky-top" ]
                     [ div [ class "d-flex flex-row align-items-center w-100 p-2" ]
-                        [ img [ src (Story.imagePath story.iconImageName), style "height" "2.5em", style "margin-right" "1em" ] []
+                        [ img [ src (imageBasePath ++ story.iconImageName), style "height" "2.5em", style "margin-right" "1em" ] []
                         , p [ class "fs-1 m-0" ] [ text story.title ]
                         , a [ class "btn-close ms-auto", href (Gen.Route.toHref Gen.Route.Home_) ] []
                         ]
                     , hr [ class "mx-2 mt-0 mb-2" ] []
                     ]
                 , div [ style "overflow" "auto", class "h-100" ]
-                    [ Story.viewDescriptionContent story.description
+                    [ Story.viewDescriptionContent imageBasePath story.description
                     , div [ style "height" "5em", class "w-100" ] []
                     ]
                 , div [ class "fixed-bottom" ]
