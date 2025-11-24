@@ -51,7 +51,7 @@ view imageBasePath maybeStoryContext totalStories =
                     , div [ style "height" "5em", class "w-100" ] []
                     ]
                 , div [ class "fixed-bottom" ]
-                    [ div [ class "d-flex flex-row align-items-center w-100 p-2 fs-4" ]
+                    [ div [ class "d-flex flex-row align-items-center w-100 p-2 fs-2" ]
                         [ viewStoryLink previous "end" (text "<")
                         , p [ class "mx-2 my-0 text-secondary flex-shrink-1" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
                         , viewStoryLink next "start" (text ">")
@@ -62,15 +62,22 @@ view imageBasePath maybeStoryContext totalStories =
 
 
 viewStoryLink maybeStory justify child =
-    div [ class ("d-flex flex-grow-1 justify-content-" ++ justify), style "flex-basis" "0" ]
+    a
+        ([ class ("d-flex flex-grow-1 my-0 link-secondary link-underline link-underline-opacity-0 justify-content-" ++ justify)
+         , style "flex-basis" "0"
+         ]
+            ++ (case maybeStory of
+                    Nothing ->
+                        []
+
+                    Just story ->
+                        [ href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId story })) ]
+               )
+        )
         [ case maybeStory of
             Nothing ->
                 Html.text ""
 
-            Just story ->
-                a
-                    [ class "my-0 link-secondary link-underline link-underline-opacity-0"
-                    , href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId story }))
-                    ]
-                    [ child ]
+            Just _ ->
+                child
         ]

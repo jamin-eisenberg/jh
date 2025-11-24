@@ -6,5 +6,4 @@
 - image hosting on cloudinary
 - test that all referenced icons and images are present in images/ (or on Cloudinary)
 - fixed bottom layout appears on top
-- allow tap anywhere beside arrows to move back and forth
 - preprocess hitbox coordinates and save all as icons (python script)
