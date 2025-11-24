@@ -1,4 +1,4 @@
-module Stories exposing (Stories, initialStories, map, selectStoryById)
+module Stories exposing (Stories, initialStories, length, map, selectStoryById)
 
 import Array exposing (Array)
 import Date
@@ -14,6 +14,12 @@ initialStories =
             [ { iconImageName = "796-812x1815.jpg"
               , title = "Squ are#"
               , description = [ Story.text "Square description", Story.image "796-812x1815.jpg" ]
+              , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
+              , hitbox = { x = 0, y = 50, width = 50, height = 50 }
+              }
+            , { iconImageName = "796-812x1815.jpg"
+              , title = "Rectangle"
+              , description = [ Story.text "Rectangle description" ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
               , hitbox = { x = 0, y = 50, width = 50, height = 50 }
               }
@@ -42,15 +48,27 @@ type Stories
     = Stories (Array Story.Story)
 
 
-selectStoryById : String -> Stories -> Maybe Story.Story
+selectStoryById : String -> Stories -> Maybe { currentIndex : Int, current : Story.Story, previous : Maybe Story.Story, next : Maybe Story.Story }
 selectStoryById storyId stories =
     let
         (Stories ss) =
             stories
+
+        maybeIndexCurrent =
+            ss
+                |> Array.indexedMap (\i story -> ( i, story ))
+                |> Array.filter (\( _, story ) -> storyId == Story.storyId story)
+                |> Array.get 0
     in
-    ss
-        |> Array.filter (\story -> storyId == Story.storyId story)
-        |> Array.get 0
+    maybeIndexCurrent
+        |> Maybe.map
+            (\( index, current ) ->
+                { currentIndex = index
+                , current = current
+                , previous = Array.get (index - 1) ss
+                , next = Array.get (index + 1) ss
+                }
+            )
 
 
 map : (Story.Story -> a) -> Stories -> List a
@@ -60,3 +78,7 @@ map f stories =
             stories
     in
     Array.map f ss |> Array.toList
+
+
+length (Stories stories) =
+    Array.length stories

@@ -3,31 +3,39 @@ module Pages.Story.Id_ exposing (page)
 import Browser.Dom exposing (Error(..))
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
-import Html exposing (a, button, div, hr, img, p, text)
+import Html exposing (a, div, hr, img, p, text)
 import Html.Attributes exposing (class, href, src, style)
 import Page exposing (Page)
 import Pages.NotFound as NotFound
 import Request
 import Shared
 import Stories
-import Story exposing (Story)
-import View exposing (View)
+import Story exposing (storyId)
 
 
 page : Shared.Model -> Request.With Params -> Page
 page shared req =
     Page.static
-        { view = view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories)
+        { view = view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories)
         }
 
 
-view : String -> Maybe Story -> View msg
-view imageBasePath maybeStory =
-    case maybeStory of
+view imageBasePath maybeStoryContext totalStories =
+    case maybeStoryContext of
         Nothing ->
             NotFound.view
 
-        Just story ->
+        Just storyContext ->
+            let
+                { previous, next } =
+                    storyContext
+
+                story =
+                    storyContext.current
+
+                storyIndex =
+                    storyContext.currentIndex
+            in
             { title = "JH - " ++ story.title
             , body =
                 [ div [ class "sticky-top" ]
@@ -44,8 +52,29 @@ view imageBasePath maybeStory =
                     ]
                 , div [ class "fixed-bottom" ]
                     [ div [ class "d-flex flex-row align-items-center w-100 p-2" ]
-                        [ a [ href (Gen.Route.toHref Gen.Route.Home_), class "ms-auto" ]
-                            [ button [ class "btn btn-secondary" ] [ text "Close" ] ]
+                        [ div [ class "mx-auto fs-4 d-flex text-secondary" ]
+                            [ case previous of
+                                Nothing ->
+                                    Html.text ""
+
+                                Just prevStory ->
+                                    a
+                                        [ class "my-0 link-secondary link-underline link-underline-opacity-0"
+                                        , href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId prevStory }))
+                                        ]
+                                        [ text "<" ]
+                            , p [ class "mx-2 my-0" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
+                            , case next of
+                                Nothing ->
+                                    Html.text ""
+
+                                Just nextStory ->
+                                    a
+                                        [ class "my-0 link-secondary link-underline link-underline-opacity-0"
+                                        , href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId nextStory }))
+                                        ]
+                                        [ text ">" ]
+                            ]
                         ]
                     ]
                 ]
