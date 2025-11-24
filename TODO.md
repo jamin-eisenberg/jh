@@ -5,5 +5,4 @@
 - open image alone on tap, then can zoom from there?
 - image hosting on cloudinary
 - test that all referenced icons and images are present in images/ (or on Cloudinary)
-- fixed bottom layout appears on top
 - preprocess hitbox coordinates and save all as icons (python script)
