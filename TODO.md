@@ -1,3 +1,5 @@
+- how to page that opens on first visit (says to click on icons to open description, links to home page and first icon page)
+- minimap JH showing location of current icon
 - limit zoom and prevent landscape (hmm, landscape only looks bad because of the current image size I think)
 - size background image against viewport (re-evaluate with actual image dims)
 - test rawStories has no duplicate icons
