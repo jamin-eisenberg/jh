@@ -26,10 +26,14 @@ view stories imageBasePath =
     { title = "JH"
     , body =
         [ Html.div [ Html.Attributes.class "w-100 h-100" ]
-            [ Svg.svg [ width "812px", height "1815px" ]
+            [ Svg.svg []
                 (Svg.image [ xlinkHref (imageBasePath ++ "SBD_2.0_Flow.png") ] []
                     :: Stories.map viewHitbox stories
                 )
+            , Html.a [ Html.Attributes.class "position-fixed bottom-0 end-0 p-2 mb-2 me-2 btn btn-secondary", Html.Attributes.href (Gen.Route.toHref Gen.Route.Help) ]
+                [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
+                    [ Html.text "help" ]
+                ]
             ]
         ]
     }

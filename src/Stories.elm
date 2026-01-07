@@ -1,4 +1,4 @@
-module Stories exposing (Stories, initialStories, length, map, selectStoryById)
+module Stories exposing (Stories, firstStory, initialStories, length, map, selectStoryById)
 
 import Array exposing (Array)
 import Date
@@ -82,3 +82,8 @@ map f stories =
 
 length (Stories stories) =
     Array.length stories
+
+
+firstStory : Stories -> Maybe Story.Story
+firstStory (Stories stories) =
+    Array.get 0 stories
