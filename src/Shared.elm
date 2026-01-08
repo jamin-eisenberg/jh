@@ -7,12 +7,14 @@ module Shared exposing
     , update
     )
 
+import ElmSpa.Request exposing (Request)
+import Gen.Route
 import Request exposing (Request)
 import Stories exposing (Stories)
 
 
 type alias Flags =
-    { imageBasePath : String }
+    { imageBasePath : String, visited : Bool }
 
 
 type alias Model =
@@ -26,8 +28,14 @@ type Msg
 
 
 init : Request -> Flags -> ( Model, Cmd Msg )
-init _ { imageBasePath } =
-    ( { stories = Stories.initialStories, imageBasePath = imageBasePath }, Cmd.none )
+init req { imageBasePath, visited } =
+    ( { stories = Stories.initialStories, imageBasePath = imageBasePath }
+    , if not visited && req.route == Gen.Route.Home_ then
+        Request.replaceRoute Gen.Route.Help req
+
+      else
+        Cmd.none
+    )
 
 
 update : Request -> Msg -> Model -> ( Model, Cmd Msg )
