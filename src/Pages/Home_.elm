@@ -30,9 +30,15 @@ view stories imageBasePath =
                 (Svg.image [ xlinkHref (imageBasePath ++ "SBD_2.0_Flow.png") ] []
                     :: Stories.map viewHitbox stories
                 )
-            , Html.a [ Html.Attributes.class "position-fixed bottom-0 end-0 p-2 mb-2 me-2 btn btn-secondary", Html.Attributes.href (Gen.Route.toHref Gen.Route.Help) ]
-                [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
-                    [ Html.text "help" ]
+            , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
+                [ Html.a [ Html.Attributes.class "p-2 btn btn-secondary", Html.Attributes.href (Gen.Route.toHref Gen.Route.Help) ]
+                    [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
+                        [ Html.text "help" ]
+                    ]
+                , Html.a [ Html.Attributes.class "ms-2 p-2 btn btn-secondary", Html.Attributes.href (Gen.Route.toHref Gen.Route.Help) ]
+                    [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
+                        [ Html.text "resume" ]
+                    ]
                 ]
             ]
         ]

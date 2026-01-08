@@ -2,7 +2,7 @@ module Pages.Help exposing (page)
 
 import Gen.Params.Help exposing (Params)
 import Gen.Route
-import Html exposing (a, div, hr, p, text)
+import Html exposing (a, div, hr, p, span, text)
 import Html.Attributes exposing (class, href)
 import Page exposing (Page)
 import Request
@@ -42,10 +42,12 @@ view firstStoryId =
                 [ text "To start, you can choose to "
                 , a [ href (Gen.Route.toHref Gen.Route.Home_) ] [ text "view the map of clickable icons" ]
                 , text " or "
-                , a [ href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = firstStoryId })) ] [ text "read the stories in chronological order" ]
-                , text "."
+                , a [ href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = firstStoryId })) ] [ text "read the stories in chronological order " ]
+                , text ". You can move between stories directly with the arrow buttons, and you can always pick up where you left off via the "
+                , span [ class "material-symbols-outlined" ] [ text "resume" ]
+                , text " (resume) button on the home page."
                 ]
-            , p [] [ text "You can learn more about the making of JH in ", a [ href "TODO" ] [ text "this story" ] ]
+            , p [] [ text "You can learn more about the making of JH in ", a [ href "TODO" ] [ text "this story" ], text "." ]
             ]
         ]
     }
