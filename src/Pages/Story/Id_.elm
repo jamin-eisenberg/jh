@@ -3,7 +3,7 @@ module Pages.Story.Id_ exposing (page)
 import Browser.Dom exposing (Error(..))
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
-import Html exposing (a, div, hr, img, p, text)
+import Html exposing (a, div, hr, img, p, span, text)
 import Html.Attributes exposing (class, href, src, style)
 import Page exposing (Page)
 import Pages.NotFound as NotFound
@@ -53,9 +53,9 @@ view imageBasePath maybeStoryContext totalStories =
                 , div [ class "fixed-bottom bg-white" ]
                     [ hr [ class "mx-2 mt-2 mb-0" ] []
                     , div [ class "d-flex flex-row align-items-center w-100 p-2 fs-2" ]
-                        [ viewStoryLink previous "end" (text "<")
+                        [ viewStoryLink previous "end" (span [ class "material-symbols-outlined" ] [ text "arrow_left_alt" ])
                         , p [ class "mx-2 my-0 text-secondary flex-shrink-1" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
-                        , viewStoryLink next "start" (text ">")
+                        , viewStoryLink next "start" (span [ class "material-symbols-outlined" ] [ text "arrow_right_alt" ])
                         ]
                     ]
                 ]
