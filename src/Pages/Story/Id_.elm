@@ -1,6 +1,8 @@
 module Pages.Story.Id_ exposing (page)
 
 import Browser.Dom exposing (Error(..))
+import Effect
+import ElmSpa.Request exposing (Request)
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
 import Html exposing (a, div, hr, img, p, span, text)
@@ -15,12 +17,15 @@ import Story exposing (storyId)
 
 page : Shared.Model -> Request.With Params -> Page
 page shared req =
-    Page.static
-        { view = view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories)
+    Page.advanced
+        { init = ( (), Effect.fromShared (Shared.ReadingNewStory req.params.id) )
+        , update = \_ model -> ( model, Effect.none )
+        , subscriptions = \_ -> Sub.none
+        , view = view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories)
         }
 
 
-view imageBasePath maybeStoryContext totalStories =
+view imageBasePath maybeStoryContext totalStories _ =
     case maybeStoryContext of
         Nothing ->
             NotFound.view

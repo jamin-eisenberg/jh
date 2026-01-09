@@ -17,12 +17,12 @@ import View exposing (View)
 page : Shared.Model -> Request.With () -> Page
 page shared _ =
     Page.static
-        { view = view shared.stories shared.imageBasePath
+        { view = view shared.stories shared.imageBasePath shared.currentlyReadingStoryId
         }
 
 
-view : Stories.Stories -> String -> View Never
-view stories imageBasePath =
+view : Stories.Stories -> String -> String -> View Never
+view stories imageBasePath currentlyReadingStoryId =
     { title = "JH"
     , body =
         [ Html.div [ Html.Attributes.class "w-100 h-100" ]
@@ -31,11 +31,17 @@ view stories imageBasePath =
                     :: Stories.map viewHitbox stories
                 )
             , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
-                [ Html.a [ Html.Attributes.class "p-2 btn btn-secondary", Html.Attributes.href (Gen.Route.toHref Gen.Route.Help) ]
+                [ Html.a
+                    [ Html.Attributes.class "p-2 btn btn-secondary"
+                    , Html.Attributes.href (Gen.Route.toHref Gen.Route.Help)
+                    ]
                     [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
                         [ Html.text "help" ]
                     ]
-                , Html.a [ Html.Attributes.class "ms-2 p-2 btn btn-secondary", Html.Attributes.href (Gen.Route.toHref Gen.Route.Help) ]
+                , Html.a
+                    [ Html.Attributes.class "ms-2 p-2 btn btn-secondary"
+                    , Html.Attributes.href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = currentlyReadingStoryId }))
+                    ]
                     [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
                         [ Html.text "resume" ]
                     ]

@@ -45,11 +45,23 @@
 
     let visited = Boolean(localStorage.getItem("visited") ?? false);
     localStorage.setItem("visited", true);
+
+    let currentlyReadingStoryId = localStorage.getItem("currentlyReadingStoryId");
+
     let app = Elm.Main.init({
         node: document.getElementById('elm-app-is-loaded-here'),
         flags: {
             visited: visited,
-            imageBasePath: "/images/" // TODO we're starting with local images. When that's untenable we can switch to cloudinary. Write a script to upload to cloudinary and disable the extra random characters so our filenames are more legible.
+            imageBasePath: "/images/", // TODO we're starting with local images. When that's untenable we can switch to cloudinary. Write a script to upload to cloudinary and disable the extra random characters so our filenames are more legible.
+            currentlyReadingStoryId: currentlyReadingStoryId
+        }
+    });
+
+    app.ports.saveToLocalStorage.subscribe((obj) => {
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                localStorage.setItem(key, obj[key]);
+            }
         }
     });
 </script>
