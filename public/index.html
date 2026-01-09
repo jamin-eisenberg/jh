@@ -15,6 +15,7 @@
         body {
             width: 100%;
             height: 100%;
+            font-size: 110%;
         }
 
         body {
@@ -36,12 +37,14 @@
     {
       "imports": {
         "@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js",
-        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.esm.min.js"
+        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.esm.min.js",
+        "panzoom": "https://unpkg.com/@panzoom/panzoom@4.6.1/dist/panzoom.min.js"
       }
     }
     </script>
 <script type="module">
-    import * as bootstrap from 'bootstrap'
+    import * as bootstrap from 'bootstrap';
+    import * as panzoom from 'panzoom';
 
     let visited = Boolean(localStorage.getItem("visited") ?? false);
     localStorage.setItem("visited", true);
@@ -63,6 +66,11 @@
                 localStorage.setItem(key, obj[key]);
             }
         }
+    });
+
+    app.ports.setUpPanzoom.subscribe(() => {
+        const jh = document.getElementById("jh");
+        Panzoom(jh, { minScale: 0.1 });
     });
 </script>
 

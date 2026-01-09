@@ -16,8 +16,11 @@ import View exposing (View)
 
 page : Shared.Model -> Request.With () -> Page
 page shared _ =
-    Page.static
-        { view = view shared.stories shared.imageBasePath shared.currentlyReadingStoryId
+    Page.element
+        { init = ( (), Shared.setUpPanzoom () )
+        , subscriptions = \_ -> Sub.none
+        , update = \_ model -> ( model, Cmd.none )
+        , view = \_ -> view shared.stories shared.imageBasePath shared.currentlyReadingStoryId
         }
 
 
@@ -25,26 +28,24 @@ view : Stories.Stories -> String -> String -> View Never
 view stories imageBasePath currentlyReadingStoryId =
     { title = "JH"
     , body =
-        [ Html.div [ Html.Attributes.class "w-100 h-100" ]
-            [ Svg.svg []
-                (Svg.image [ xlinkHref (imageBasePath ++ "SBD_2.0_Flow.png") ] []
-                    :: Stories.map viewHitbox stories
-                )
-            , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
-                [ Html.a
-                    [ Html.Attributes.class "p-2 btn btn-secondary"
-                    , Html.Attributes.href (Gen.Route.toHref Gen.Route.Help)
-                    ]
-                    [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
-                        [ Html.text "help" ]
-                    ]
-                , Html.a
-                    [ Html.Attributes.class "ms-2 p-2 btn btn-secondary"
-                    , Html.Attributes.href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = currentlyReadingStoryId }))
-                    ]
-                    [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
-                        [ Html.text "resume" ]
-                    ]
+        [ Svg.svg [ Svg.Attributes.id "jh", Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
+            (Svg.image [ xlinkHref (imageBasePath ++ "jh-draft.jpg") ] []
+                :: Stories.map viewHitbox stories
+            )
+        , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
+            [ Html.a
+                [ Html.Attributes.class "p-2 btn btn-secondary"
+                , Html.Attributes.href (Gen.Route.toHref Gen.Route.Help)
+                ]
+                [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
+                    [ Html.text "help" ]
+                ]
+            , Html.a
+                [ Html.Attributes.class "ms-2 p-2 btn btn-secondary"
+                , Html.Attributes.href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = currentlyReadingStoryId }))
+                ]
+                [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
+                    [ Html.text "resume" ]
                 ]
             ]
         ]

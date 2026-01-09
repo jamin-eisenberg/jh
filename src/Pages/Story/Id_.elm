@@ -2,7 +2,6 @@ module Pages.Story.Id_ exposing (page)
 
 import Browser.Dom exposing (Error(..))
 import Effect
-import ElmSpa.Request exposing (Request)
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
 import Html exposing (a, div, hr, img, p, span, text)

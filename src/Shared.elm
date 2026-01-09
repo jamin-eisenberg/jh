@@ -3,6 +3,7 @@ port module Shared exposing
     , Model
     , Msg(..)
     , init
+    , setUpPanzoom
     , subscriptions
     , update
     )
@@ -15,6 +16,9 @@ import Story exposing (storyId)
 
 
 port saveToLocalStorage : { currentlyReadingStoryId : String } -> Cmd msg
+
+
+port setUpPanzoom : () -> Cmd msg
 
 
 type alias Flags =
