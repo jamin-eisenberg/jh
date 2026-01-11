@@ -28,24 +28,26 @@ view : Stories.Stories -> String -> String -> View Never
 view stories imageBasePath currentlyReadingStoryId =
     { title = "JH"
     , body =
-        [ Svg.svg [ Svg.Attributes.id "jh", Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
-            (Svg.image [ xlinkHref (imageBasePath ++ "jh-draft.jpg") ] []
-                :: Stories.map viewHitbox stories
-            )
-        , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
-            [ Html.a
-                [ Html.Attributes.class "p-2 btn btn-secondary"
-                , Html.Attributes.href (Gen.Route.toHref Gen.Route.Help)
-                ]
-                [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
-                    [ Html.text "help" ]
-                ]
-            , Html.a
-                [ Html.Attributes.class "ms-2 p-2 btn btn-secondary"
-                , Html.Attributes.href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = currentlyReadingStoryId }))
-                ]
-                [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
-                    [ Html.text "resume" ]
+        [ Html.div [ Html.Attributes.class "mw-100" ]
+            [ Svg.svg [ Svg.Attributes.id "jh", Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
+                (Svg.image [ xlinkHref (imageBasePath ++ "jh-draft.jpg") ] []
+                    :: Stories.map viewHitbox stories
+                )
+            , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
+                [ Html.a
+                    [ Html.Attributes.class "p-2 btn btn-secondary"
+                    , Html.Attributes.href (Gen.Route.toHref Gen.Route.Help)
+                    ]
+                    [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
+                        [ Html.text "help" ]
+                    ]
+                , Html.a
+                    [ Html.Attributes.class "ms-2 p-2 btn btn-secondary"
+                    , Html.Attributes.href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = currentlyReadingStoryId }))
+                    ]
+                    [ Html.span [ Html.Attributes.class "material-symbols-outlined", Html.Attributes.style "font-size" "3em" ]
+                        [ Html.text "resume" ]
+                    ]
                 ]
             ]
         ]
