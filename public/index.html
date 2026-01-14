@@ -72,7 +72,7 @@
         const jh = document.getElementById("jh");
         const minScale = 0.8;
         const panzoom = Panzoom(jh, { origin: '0 0', startScale: minScale });
-        setTimeout(() => panzoom.setOptions(origin, "50% 50%"), 100);
+        setTimeout(() => panzoom.setOptions({ origin: "50% 50%" }), 100);
     });
 </script>
 
