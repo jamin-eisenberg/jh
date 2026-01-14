@@ -1,4 +1,5 @@
 - link JH icon in help description
+- move scaled image automatically (based on dimensions)
 - minimap JH showing location of current icon
 - limit zoom and prevent landscape (hmm, landscape only looks bad because of the current image size I think)
 - size background image against viewport (re-evaluate with actual image dims)

@@ -20,16 +20,16 @@ page shared _ =
         { init = ( (), Shared.setUpPanzoom () )
         , subscriptions = \_ -> Sub.none
         , update = \_ model -> ( model, Cmd.none )
-        , view = \_ -> view shared.stories shared.imageBasePath shared.currentlyReadingStoryId
+        , view = \_ -> view shared.stories shared.imageBasePath shared.currentlyReadingStoryId shared.imageWidth shared.imageHeight
         }
 
 
-view : Stories.Stories -> String -> String -> View Never
-view stories imageBasePath currentlyReadingStoryId =
+view : Stories.Stories -> String -> String -> Int -> Int -> View Never
+view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
     { title = "JH"
     , body =
         [ Html.div [ Html.Attributes.class "mw-100" ]
-            [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width 2765, Html.Attributes.height 2565 ]
+            [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width imageWidth, Html.Attributes.height imageHeight ]
                 [ Svg.svg [ Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
                     (Svg.image [ xlinkHref (imageBasePath ++ "jh-draft.jpg") ] []
                         :: Stories.map viewHitbox stories

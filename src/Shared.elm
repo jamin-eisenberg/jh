@@ -22,13 +22,20 @@ port setUpPanzoom : () -> Cmd msg
 
 
 type alias Flags =
-    { imageBasePath : String, visited : Bool, currentlyReadingStoryId : Maybe String }
+    { imageBasePath : String
+    , visited : Bool
+    , currentlyReadingStoryId : Maybe String
+    , imageWidth : Int
+    , imageHeight : Int
+    }
 
 
 type alias Model =
     { stories : Stories
     , imageBasePath : String
     , currentlyReadingStoryId : String
+    , imageWidth : Int
+    , imageHeight : Int
     }
 
 
@@ -37,7 +44,7 @@ type Msg
 
 
 init : Request -> Flags -> ( Model, Cmd Msg )
-init req { imageBasePath, visited, currentlyReadingStoryId } =
+init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHeight } =
     ( { stories = Stories.initialStories
       , imageBasePath = imageBasePath
       , currentlyReadingStoryId =
@@ -47,6 +54,8 @@ init req { imageBasePath, visited, currentlyReadingStoryId } =
                         |> Maybe.map storyId
                         |> Maybe.withDefault "not-found"
                     )
+      , imageWidth = imageWidth
+      , imageHeight = imageHeight
       }
     , if not visited && req.route == Gen.Route.Home_ then
         Request.replaceRoute Gen.Route.Help req
