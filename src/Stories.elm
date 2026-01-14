@@ -21,13 +21,13 @@ initialStories =
               , title = "Rectangle"
               , description = [ Story.text "Rectangle description" ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
-              , hitbox = { x = 0, y = 50, width = 50, height = 50 }
+              , hitbox = { x = 0, y = 100, width = 50, height = 50 }
               }
             , { iconImageName = "796-812x1815.jpg"
               , title = "Circle"
               , description =
                     repeat 3
-                        (repeat 51 "Circle description"
+                        (repeat 51 "Circle description "
                             |> String.join ""
                             |> Story.text
                         )

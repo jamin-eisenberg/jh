@@ -50,9 +50,10 @@ view imageBasePath maybeStoryContext totalStories _ =
                             , div
                                 [ style "background-color" "red"
                                 , style "position" "absolute"
-                                , style "width" "10px"
-                                , style "height" "10px"
-                                , style "top" "10px"
+                                , style "width" "8px"
+                                , style "height" "8px"
+                                , style "left" (String.fromInt (9 + story.hitbox.x) ++ "px")
+                                , style "top" (String.fromInt (9 + story.hitbox.y) ++ "px")
                                 ]
                                 []
                             ]
