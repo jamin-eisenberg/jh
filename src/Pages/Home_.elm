@@ -29,10 +29,12 @@ view stories imageBasePath currentlyReadingStoryId =
     { title = "JH"
     , body =
         [ Html.div [ Html.Attributes.class "mw-100" ]
-            [ Svg.svg [ Svg.Attributes.id "jh", Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
-                (Svg.image [ xlinkHref (imageBasePath ++ "jh-draft.jpg") ] []
-                    :: Stories.map viewHitbox stories
-                )
+            [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width 2765, Html.Attributes.height 2565 ]
+                [ Svg.svg [ Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
+                    (Svg.image [ xlinkHref (imageBasePath ++ "jh-draft.jpg") ] []
+                        :: Stories.map viewHitbox stories
+                    )
+                ]
             , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
                 [ Html.a
                     [ Html.Attributes.class "p-2 btn btn-secondary"

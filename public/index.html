@@ -70,7 +70,8 @@
 
     app.ports.setUpPanzoom.subscribe(() => {
         const jh = document.getElementById("jh");
-        Panzoom(jh, { minScale: 0.1 });
+        const minScale = 0.9;
+        const panzoom = Panzoom(jh, { origin: '0 0', minScale, startScale: minScale });
     });
 </script>
 
