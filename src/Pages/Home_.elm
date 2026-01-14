@@ -31,7 +31,7 @@ view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
         [ Html.div [ Html.Attributes.class "mw-100" ]
             [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width imageWidth, Html.Attributes.height imageHeight ]
                 [ Svg.svg [ Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
-                    (Svg.image [ xlinkHref (imageBasePath ++ "jh-draft.jpg") ] []
+                    (Svg.image [ xlinkHref (imageBasePath ++ Shared.jhImageName) ] []
                         :: Stories.map viewHitbox stories
                     )
                 ]

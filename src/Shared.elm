@@ -3,6 +3,7 @@ port module Shared exposing
     , Model
     , Msg(..)
     , init
+    , jhImageName
     , setUpPanzoom
     , subscriptions
     , update
@@ -41,6 +42,10 @@ type alias Model =
 
 type Msg
     = ReadingNewStory String
+
+
+jhImageName =
+    "jh-draft.jpg"
 
 
 init : Request -> Flags -> ( Model, Cmd Msg )
