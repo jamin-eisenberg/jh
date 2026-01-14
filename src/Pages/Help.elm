@@ -29,7 +29,8 @@ view firstStoryId =
     { title = "JH - Help"
     , body =
         [ div [ class "sticky-top" ]
-            [ div [ class "d-flex flex-row align-items-center w-100 p-2" ]
+            [ div [] [] -- panzoom seems to affect the first child div (nevermind that we're on a different page now), so let it affect this empty one
+            , div [ class "d-flex flex-row align-items-center w-100 p-2" ]
                 [ p [ class "fs-1 m-0" ] [ text "What is JH?" ]
                 , a [ class "btn-close ms-auto", href (Gen.Route.toHref Gen.Route.Home_) ] []
                 ]

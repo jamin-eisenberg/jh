@@ -69,12 +69,15 @@
     });
 
     app.ports.setUpPanzoom.subscribe(() => {
-        const jh = document.getElementById("jh");
-        const minScale = 0.15;
-        const panzoom = Panzoom(jh, { minScale, startScale: minScale, startX: -1165, startY: -7273 });
-        // TODO extract to flags
-        const imageWidth = 2765;
-        const imageHeight = 2565;
+        setTimeout(() => {
+            const jh = document.getElementById("jh");
+            const minScale = 0.15;
+            const panzoom = Panzoom(jh, { minScale, startScale: minScale, startX: -1165, startY: -7273 });
+            // TODO extract to flags
+            const imageWidth = 2765;
+            const imageHeight = 2565;
+            console.log("Set up Panzoom.");
+        }, 10);
     });
 </script>
 
