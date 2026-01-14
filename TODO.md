@@ -1,4 +1,3 @@
-- refreshing on story/help pages leads to overflow over title
 - link JH icon in help description
 - minimap JH showing location of current icon
 - limit zoom and prevent landscape (hmm, landscape only looks bad because of the current image size I think)
