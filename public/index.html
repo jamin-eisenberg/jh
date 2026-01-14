@@ -70,19 +70,11 @@
 
     app.ports.setUpPanzoom.subscribe(() => {
         const jh = document.getElementById("jh");
-        const minScale = 0.8;
-        const panzoom = Panzoom(jh, { minScale, startScale: minScale });
+        const minScale = 0.15;
+        const panzoom = Panzoom(jh, { minScale, startScale: minScale, startX: -1165, startY: -7273 });
         // TODO extract to flags
         const imageWidth = 2765;
         const imageHeight = 2565;
-        setTimeout(() => {
-            console.log("hi");
-            // initially, center is at 0, 0
-            // we want it to be at -width/2, -height/2, scaled
-            panzoom.pan(-52, -321);
-            // panzoom.pan(-100, 0)
-            console.log(panzoom.getPan())
-        }, 100);
     });
 </script>
 
