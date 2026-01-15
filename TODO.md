@@ -1,11 +1,11 @@
 - link JH icon in help description
 - move scaled image automatically (based on dimensions)
-- minimap JH showing location of current icon
-- limit zoom and prevent landscape (hmm, landscape only looks bad because of the current image size I think)
-- size background image against viewport (re-evaluate with actual image dims)
+- limit zoom
+- Set hitboxes
+  - preprocess hitbox coordinates and save all as icons (python script)
+  - consider calculating square for minimap display
+
+Final checks:
 - test rawStories has no duplicate icons
-- increase text size on zoom on story page?
-- open image alone on tap, then can zoom from there?
 - image hosting on cloudinary (see API interaction at cloudinary_api.py scratch file)
 - test that all referenced icons and images are present in images/ (or on Cloudinary)
-- preprocess hitbox coordinates and save all as icons (python script)
