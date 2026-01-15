@@ -20,11 +20,11 @@ page shared req =
         { init = ( (), Effect.fromShared (Shared.ReadingNewStory req.params.id) )
         , update = \_ model -> ( model, Effect.none )
         , subscriptions = \_ -> Sub.none
-        , view = view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories)
+        , view = \_ -> view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories) shared.imageWidth shared.imageHeight
         }
 
 
-view imageBasePath maybeStoryContext totalStories _ =
+view imageBasePath maybeStoryContext totalStories imageWidth imageHeight =
     case maybeStoryContext of
         Nothing ->
             NotFound.view
@@ -44,20 +44,42 @@ view imageBasePath maybeStoryContext totalStories _ =
             , body =
                 [ div [ class "sticky-top" ]
                     [ div [] [] -- panzoom seems to affect the first child div (nevermind that we're on a different page now), so let it affect this empty one
-                    , div [ class "d-flex flex-row align-items-center w-100 p-2" ]
-                        [ div [ style "height" "2.5em", style "margin-right" "1em" ]
+                    , let
+                        thumbnailHeight =
+                            48
+
+                        thumbnailWidth =
+                            (toFloat imageWidth / toFloat imageHeight) * thumbnailHeight
+
+                        minimapBoxWidth =
+                            floor (thumbnailWidth * (toFloat story.hitbox.width / toFloat imageWidth))
+
+                        minimapBoxHeight =
+                            floor (thumbnailHeight * (toFloat story.hitbox.height / toFloat imageHeight))
+
+                        minimapBoxX =
+                            floor (9 + toFloat story.hitbox.x * (thumbnailWidth / toFloat imageWidth))
+
+                        minimapBoxY =
+                            floor (9 + toFloat story.hitbox.y * (thumbnailHeight / toFloat imageHeight))
+
+                        visualExpansionFactor =
+                            2
+                      in
+                      div [ class "d-flex flex-row align-items-center w-100 p-2" ]
+                        [ div [ style "height" (String.fromInt thumbnailHeight ++ "px"), style "margin-right" "1em" ]
                             [ img [ src (imageBasePath ++ Shared.jhImageName), class "w-100 h-100" ] []
                             , div
                                 [ style "background-color" "red"
                                 , style "position" "absolute"
-                                , style "width" "8px"
-                                , style "height" "8px"
-                                , style "left" (String.fromInt (9 + story.hitbox.x) ++ "px")
-                                , style "top" (String.fromInt (9 + story.hitbox.y) ++ "px")
+                                , style "width" (String.fromInt (minimapBoxWidth * visualExpansionFactor) ++ "px")
+                                , style "height" (String.fromInt (minimapBoxHeight * visualExpansionFactor) ++ "px")
+                                , style "left" (String.fromInt minimapBoxX ++ "px")
+                                , style "top" (String.fromInt minimapBoxY ++ "px")
                                 ]
                                 []
                             ]
-                        , img [ src (imageBasePath ++ story.iconImageName), style "height" "2.5em", style "margin-right" "1em" ] []
+                        , img [ src (imageBasePath ++ story.iconImageName), style "height" (String.fromInt thumbnailHeight ++ "px"), style "margin-right" "1em" ] []
                         , p [ class "fs-1 m-0" ] [ text story.title ]
                         , a [ class "btn-close ms-auto", href (Gen.Route.toHref Gen.Route.Home_) ] []
                         ]

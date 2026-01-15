@@ -15,13 +15,13 @@ initialStories =
               , title = "Squ are#"
               , description = [ Story.text "Square description", Story.image "796-812x1815.jpg" ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
-              , hitbox = { x = 0, y = 50, width = 50, height = 50 }
+              , hitbox = { x = 0, y = 0, width = 200, height = 200 }
               }
             , { iconImageName = "796-812x1815.jpg"
               , title = "Rectangle"
               , description = [ Story.text "Rectangle description" ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
-              , hitbox = { x = 0, y = 100, width = 50, height = 50 }
+              , hitbox = { x = 0, y = 2000, width = 200, height = 200 }
               }
             , { iconImageName = "796-812x1815.jpg"
               , title = "Circle"
@@ -38,7 +38,7 @@ initialStories =
                                 |> Story.text
                             )
               , date = Date.fromPosix Time.utc (Time.millisToPosix 0)
-              , hitbox = { x = 100, y = 50, width = 50, height = 50 }
+              , hitbox = { x = 2000, y = 0, width = 200, height = 400 }
               }
             ]
         )
