@@ -4,3 +4,4 @@
   [plugins.inputs]
   cloudName = "dtlwerjap"
   imagesPath = "/images"
+  deliveryType = "upload"
