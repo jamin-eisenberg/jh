@@ -11,3 +11,8 @@
   to = "https://res.cloudinary.com/dtlwerjap/image/upload/:splat"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
