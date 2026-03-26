@@ -1,5 +1,11 @@
 [[redirects]]
-  from = "/images/*"
+  from = "https://jh-stories.netlify.app/images/*"
+  to = "https://res.cloudinary.com/dtlwerjap/image/upload/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "http://jh-stories.netlify.app/images/*"
   to = "https://res.cloudinary.com/dtlwerjap/image/upload/:splat"
   status = 200
   force = true
