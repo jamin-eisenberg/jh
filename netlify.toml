@@ -1,11 +1,3 @@
-[[plugins]]
-  package = "netlify-plugin-cloudinary"
-
-  [plugins.inputs]
-  cloudName = "dtlwerjap"
-  imagesPath = "/images"
-  deliveryType = "upload"
-
 [[redirects]]
   from = "/images/*"
   to = "https://res.cloudinary.com/dtlwerjap/image/upload/:splat"
