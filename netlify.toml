@@ -5,3 +5,9 @@
   cloudName = "dtlwerjap"
   imagesPath = "/images"
   deliveryType = "upload"
+
+[[redirects]]
+  from = "/images/*"
+  to = "https://res.cloudinary.com/dtlwerjap/image/upload/:splat"
+  status = 200
+  force = true
