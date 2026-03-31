@@ -69,8 +69,11 @@ def icon_to_elm(icon):
     elm["date"] = f"Date.fromPosix Time.utc (Time.millisToPosix {int(datetime.datetime.strptime(icon["Date"], "%m/%d/%Y").timestamp() * 1000)})"
     elm["iconImageName"] = f"\"{icon_image_name(icon)}.jpg\""
 
-    min_x, min_y, max_x, max_y = aabb(areas[icon["Title"]])
+    coords = areas[icon["Title"]]
+    min_x, min_y, max_x, max_y = aabb(coords)
     elm["aabb"] = "{" + f" x = {min_x}, y = {min_y}, width = {max_x - min_x}, height = {max_y - min_y}" + "}"
+
+    elm["hitbox"] = "[" + ", ".join(["{" + f" x = {coord[0]}, y = {coord[1]} " + "}" for coord in coords]) + "]"
 
     return "{" + "\n, ".join([f"{key} = {value}" for key, value in elm.items()]) + "}"
 

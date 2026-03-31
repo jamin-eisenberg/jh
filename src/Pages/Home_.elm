@@ -10,7 +10,7 @@ import Shared
 import Stories
 import Story exposing (Story, storyId)
 import Svg
-import Svg.Attributes exposing (height, width, x, xlinkHref, y)
+import Svg.Attributes exposing (height, points, width, x, xlinkHref, y)
 import View exposing (View)
 
 
@@ -59,11 +59,12 @@ view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
 viewaabb : Story -> Svg.Svg msg
 viewaabb story =
     Svg.a [ Svg.Attributes.xlinkHref (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId story })) ]
-        [ Svg.rect
-            [ width (inPx story.aabb.width)
-            , height (inPx story.aabb.height)
-            , x (inPx story.aabb.x)
-            , y (inPx story.aabb.y)
+        [ Svg.polygon
+            [ points
+                (story.hitbox
+                    |> List.map (\{ x, y } -> String.fromInt x ++ "," ++ String.fromInt y)
+                    |> String.join " "
+                )
             , Svg.Attributes.stroke "red"
             , Svg.Attributes.fillOpacity "0"
             ]

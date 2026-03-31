@@ -25,6 +25,7 @@ type alias Story =
     , description : List DescriptionContent
     , date : Date
     , aabb : Rect
+    , hitbox : List { x : Int, y : Int }
     }
 
 

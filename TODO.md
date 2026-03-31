@@ -9,6 +9,10 @@
     ,,,,,TODO font size,,,
 - AABBs look off on the minimap
 - Incorporate estimated
+- reset scroll per page
+- Increase margins on text pages
+- allow drag/zoom outside of JH background? (make image much larger with white background maybe?)
+- dragging on links works, but releasing then opens the link
 
 Final checks:
 
