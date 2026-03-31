@@ -13,6 +13,7 @@ import ElmSpa.Request exposing (Request)
 import Gen.Route
 import Request exposing (Request)
 import Stories exposing (Stories)
+import StoriesData
 import Story exposing (storyId)
 
 
@@ -50,12 +51,12 @@ jhImageName =
 
 init : Request -> Flags -> ( Model, Cmd Msg )
 init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHeight } =
-    ( { stories = Stories.initialStories
+    ( { stories = StoriesData.initialStories
       , imageBasePath = imageBasePath
       , currentlyReadingStoryId =
             currentlyReadingStoryId
                 |> Maybe.withDefault
-                    (Stories.firstStory Stories.initialStories
+                    (Stories.firstStory StoriesData.initialStories
                         |> Maybe.map storyId
                         |> Maybe.withDefault "not-found"
                     )
