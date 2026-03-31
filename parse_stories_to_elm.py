@@ -48,7 +48,10 @@ def icon_to_elm(icon):
     elm = {}
 
     elm["title"] = f"\"{icon["Title"].replace("\"", "\\\"")}\""
-    elm["description"] = f"[Story.text \"{icon["Long Description"].replace("\"", "\\\"")}\"]"
+
+    description_texts = [f"Story.text \"{icon["Long Description"].replace("\"", "\\\"")}\"" for description_text in icon["Long Description"].split("\n\n")]
+    elm["description"] = f"[{", ".join(description_texts)}]"
+
     elm["date"] = f"Date.fromPosix Time.utc (Time.millisToPosix {int(datetime.datetime.strptime(icon["Date"], "%m/%d/%Y").timestamp() * 1000)})"
     elm["iconImageName"] = f"\"{icon_image_name(icon)}.jpg\""
     

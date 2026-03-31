@@ -8,6 +8,7 @@
     ,,,,,TODO add note to welcome page not to read it all at once,,,
     ,,,,,TODO font size,,,
 - AABBs look off on the minimap
+- Incorporate estimated
 
 Final checks:
 
