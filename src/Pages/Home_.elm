@@ -30,7 +30,7 @@ view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
     , body =
         [ Html.div [ Html.Attributes.class "mw-100" ]
             [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width imageWidth, Html.Attributes.height imageHeight ]
-                [ Svg.svg [ Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
+                [ Svg.svg [ Svg.Attributes.width "2282px", Svg.Attributes.height "2095px" ]
                     (Svg.image [ xlinkHref (imageBasePath ++ Shared.jhImageName) ] []
                         :: Stories.map viewaabb stories
                     )
