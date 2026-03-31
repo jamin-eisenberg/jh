@@ -1,6 +1,7 @@
 import csv
 import datetime
 import itertools
+import os
 
 with open('icons_spreadsheet.csv') as icons_spreadsheet:
     icons_spreadsheet_reader = csv.reader(icons_spreadsheet)
@@ -44,17 +45,30 @@ def icon_image_name(icon):
     return f"icon-{icon["Title"].lower().replace("\"", "").replace(" ", "-")}"
 
 
+all_image_filenames = os.listdir("images")
+
+
 def icon_to_elm(icon):
     elm = {}
 
     elm["title"] = f"\"{icon["Title"].replace("\"", "\\\"")}\""
 
-    description_texts = [f"Story.text \"{icon["Long Description"].replace("\"", "\\\"")}\"" for description_text in icon["Long Description"].split("\n\n")]
-    elm["description"] = f"[{", ".join(description_texts)}]"
+    description_texts = [f"Story.text \"{description_text.replace("\"", "\\\"")}\"" for description_text in icon["Long Description"].split("\n\n")]
+
+    image_names = [image_name for image_name in icon["Image names"].split(",") if image_name != ""]
+    image_filenames = []
+    for image_name in image_names:
+        matching_image_names = [potential_name for potential_name in all_image_filenames if potential_name.startswith(image_name + ".")]
+        if len(matching_image_names) != 1:
+            raise ValueError(f"Expected one matching image name for {image_name}. Found {matching_image_names}") 
+        image_filenames.append(matching_image_names[0])
+
+    description_images = [f"Story.image \"{image_filename}\"" for image_filename in image_filenames]
+    elm["description"] = f"[{", ".join(description_texts + description_images)}]"
 
     elm["date"] = f"Date.fromPosix Time.utc (Time.millisToPosix {int(datetime.datetime.strptime(icon["Date"], "%m/%d/%Y").timestamp() * 1000)})"
     elm["iconImageName"] = f"\"{icon_image_name(icon)}.jpg\""
-    
+
     min_x, min_y, max_x, max_y = aabb(areas[icon["Title"]])
     elm["aabb"] = "{" + f" x = {min_x}, y = {min_y}, width = {max_x - min_x}, height = {max_y - min_y}" + "}"
 
