@@ -7,6 +7,7 @@
     ,,,,,TODO load test website,,,
     ,,,,,TODO add note to welcome page not to read it all at once,,,
     ,,,,,TODO font size,,,
+- AABBs look off on the minimap
 
 Final checks:
 

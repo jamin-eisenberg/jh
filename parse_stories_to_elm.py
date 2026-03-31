@@ -40,11 +40,8 @@ def aabb(coords):
     return (min_x, min_y, max_x, max_y)
 
 
-# rows = rows[:10]  # TODO remove
-
-
 def icon_image_name(icon):
-    return icon["Title"].lower().replace("\"", "").replace(" ", "-")
+    return f"icon-{icon["Title"].lower().replace("\"", "").replace(" ", "-")}"
 
 
 def icon_to_elm(icon):
