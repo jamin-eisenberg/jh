@@ -24,7 +24,7 @@ type alias Story =
     , title : String
     , description : List DescriptionContent
     , date : Date
-    , hitbox : Rect
+    , aabb : Rect
     }
 
 

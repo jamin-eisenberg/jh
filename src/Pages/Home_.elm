@@ -32,7 +32,7 @@ view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
             [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width imageWidth, Html.Attributes.height imageHeight ]
                 [ Svg.svg [ Svg.Attributes.width "2765px", Svg.Attributes.height "2565px" ]
                     (Svg.image [ xlinkHref (imageBasePath ++ Shared.jhImageName) ] []
-                        :: Stories.map viewHitbox stories
+                        :: Stories.map viewaabb stories
                     )
                 ]
             , Html.div [ Html.Attributes.class "position-fixed bottom-0 end-0 mb-2 me-2" ]
@@ -56,14 +56,14 @@ view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
     }
 
 
-viewHitbox : Story -> Svg.Svg msg
-viewHitbox story =
+viewaabb : Story -> Svg.Svg msg
+viewaabb story =
     Svg.a [ Svg.Attributes.xlinkHref (Gen.Route.toHref (Gen.Route.Story__Id_ { id = storyId story })) ]
         [ Svg.rect
-            [ width (inPx story.hitbox.width)
-            , height (inPx story.hitbox.height)
-            , x (inPx story.hitbox.x)
-            , y (inPx story.hitbox.y)
+            [ width (inPx story.aabb.width)
+            , height (inPx story.aabb.height)
+            , x (inPx story.aabb.x)
+            , y (inPx story.aabb.y)
             , Svg.Attributes.stroke "red"
             , Svg.Attributes.fillOpacity "0"
             ]

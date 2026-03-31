@@ -52,16 +52,16 @@ view imageBasePath maybeStoryContext totalStories imageWidth imageHeight =
                             (toFloat imageWidth / toFloat imageHeight) * thumbnailHeight
 
                         minimapBoxWidth =
-                            floor (thumbnailWidth * (toFloat story.hitbox.width / toFloat imageWidth))
+                            floor (thumbnailWidth * (toFloat story.aabb.width / toFloat imageWidth))
 
                         minimapBoxHeight =
-                            floor (thumbnailHeight * (toFloat story.hitbox.height / toFloat imageHeight))
+                            floor (thumbnailHeight * (toFloat story.aabb.height / toFloat imageHeight))
 
                         minimapBoxX =
-                            floor (9 + toFloat story.hitbox.x * (thumbnailWidth / toFloat imageWidth))
+                            floor (9 + toFloat story.aabb.x * (thumbnailWidth / toFloat imageWidth))
 
                         minimapBoxY =
-                            floor (9 + toFloat story.hitbox.y * (thumbnailHeight / toFloat imageHeight))
+                            floor (9 + toFloat story.aabb.y * (thumbnailHeight / toFloat imageHeight))
 
                         visualExpansionFactor =
                             2
