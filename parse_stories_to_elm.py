@@ -50,7 +50,7 @@ def icon_to_elm(icon):
     elm["title"] = f"\"{icon["Title"].replace("\"", "\\\"")}\""
     elm["description"] = f"[Story.text \"{icon["Long Description"].replace("\"", "\\\"")}\"]"
     elm["date"] = f"Date.fromPosix Time.utc (Time.millisToPosix {int(datetime.datetime.strptime(icon["Date"], "%m/%d/%Y").timestamp() * 1000)})"
-    elm["iconImageName"] = f"\"{icon_image_name(icon)}.png\""
+    elm["iconImageName"] = f"\"{icon_image_name(icon)}.jpg\""
     
     min_x, min_y, max_x, max_y = aabb(areas[icon["Title"]])
     elm["aabb"] = "{" + f" x = {min_x}, y = {min_y}, width = {max_x - min_x}, height = {max_y - min_y}" + "}"
