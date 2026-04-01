@@ -67,6 +67,7 @@ def icon_to_elm(icon):
     elm["description"] = f"[{", ".join(description_texts + description_images)}]"
 
     elm["date"] = f"Date.fromPosix Time.utc (Time.millisToPosix {int(datetime.datetime.strptime(icon["Date"], "%m/%d/%Y").timestamp() * 1000)})"
+    elm["dateIsApproximate"] = "True" if "x" in icon["Estimated"].lower() else "False"
     elm["iconImageName"] = f"\"{icon_image_name(icon)}.jpg\""
 
     coords = areas[icon["Title"]]

@@ -1,6 +1,7 @@
 module Pages.Story.Id_ exposing (page)
 
 import Browser.Dom exposing (Error(..))
+import Date
 import Effect
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
@@ -86,7 +87,19 @@ view imageBasePath maybeStoryContext totalStories imageWidth imageHeight =
                     , hr [ class "mx-2 mt-0 mb-2" ] []
                     ]
                 , div [ style "overflow" "auto", class "h-100" ]
-                    [ Story.viewDescriptionContent imageBasePath story.description
+                    [ p [ class "p-2" ]
+                        [ text
+                            ("Date: "
+                                ++ (if story.dateIsApproximate then
+                                        "~"
+
+                                    else
+                                        ""
+                                   )
+                                ++ Date.format "MMMM ddd, y" story.date
+                            )
+                        ]
+                    , Story.viewDescriptionContent imageBasePath story.description
                     , div [ style "height" "8em", class "w-100" ] []
                     ]
                 , div [ class "fixed-bottom bg-white" ]
