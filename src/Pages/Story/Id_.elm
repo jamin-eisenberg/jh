@@ -87,7 +87,7 @@ view imageBasePath maybeStoryContext totalStories imageWidth imageHeight =
                     , hr [ class "mx-2 mt-0 mb-2" ] []
                     ]
                 , div [ style "overflow" "auto", class "h-100" ]
-                    [ p [ class "p-2" ]
+                    [ p [ class "px-2 mb-2" ]
                         [ text
                             ("Date: "
                                 ++ (if story.dateIsApproximate then
