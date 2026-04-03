@@ -25,6 +25,7 @@ Aesthetics:
 - star or you are here instead of red square 
 
 Final checks:
+- remove hitboxes
 - check that all referenced icons and images are present in images/ (or on Cloudinary)
 - load test website (PAUSE LOGROCKET)
 - pay for higher website capacity for the month
