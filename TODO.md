@@ -7,12 +7,14 @@ Functionality:
 - mobile-first warning (shown on computers only)
 
 Content:
+- Sparrow 2 texts
 - link JH icon in help description
 - add 100% human made to the welcome page
 - add note to welcome page not to read it all at once
 - move sweater picture to top
 - put all important information before links on welcome page
 - Make it very clear that you can click on the icons. Tour?
+- shelf picture also under shelf
 
 Aesthetics:
 - scroll overlays text on title (iPhone specific)
@@ -31,5 +33,6 @@ Final checks:
 - pay for higher website capacity for the month
 
 Further Ideas:
+- skip to beginning button
 - maybe like a "reveal" button for the story?
 - timeline?
