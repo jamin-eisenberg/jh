@@ -46,7 +46,7 @@ type Msg
 
 
 jhImageName =
-    "jh.jpg"
+    "jh.png"
 
 
 init : Request -> Flags -> ( Model, Cmd Msg )

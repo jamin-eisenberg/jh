@@ -28,9 +28,9 @@ view : Stories.Stories -> String -> String -> Int -> Int -> View Never
 view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
     { title = "JH"
     , body =
-        [ Html.div [ Html.Attributes.class "mw-100" ]
-            [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width imageWidth, Html.Attributes.height imageHeight ]
-                [ Svg.svg [ Svg.Attributes.width "2282px", Svg.Attributes.height "2095px" ]
+        [ Html.div [ Html.Attributes.class "mw-100 w-100 h-100" ]
+            [ Html.div [ Html.Attributes.id "jh", Html.Attributes.class "w-100 h-100" ]
+                [ Svg.svg [ Svg.Attributes.width (String.fromInt imageWidth ++ "px"), Svg.Attributes.height (String.fromInt imageHeight ++ "px") ]
                     (Svg.image [ xlinkHref (imageBasePath ++ Shared.jhImageName) ] []
                         :: Stories.map viewaabb stories
                     )
