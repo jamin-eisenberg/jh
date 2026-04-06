@@ -102,45 +102,21 @@
             const jh = document.getElementById("jh");
             const minScale = 0.15;
             const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: minScale, startX: -1165, startY: -7273, canvas: true, noBind: true});
-            let downEvent = null;
             let panning = false;
             jh.addEventListener('pointerdown', event => {
                 panning = true;
-                downEvent = event;
                 panzoom.handleDown(event);
             });
             document.addEventListener('pointermove', event => {
                 if (panning) {
                     GetStyleClass('a').pointerEvents = "none"
                 }
-                panzoom.handleMove(event);
-                // document.querySelector('a').addEventListener('click', function(e) {
-                //     e.preventDefault();
-                // });
-                
+                panzoom.handleMove(event);                
             });
             document.addEventListener('pointerup', event => {
                 GetStyleClass('a').pointerEvents = ""
-                // console.log(panned);
-                // console.log(event);
-                // document.querySelector('a').addEventListener('click', function(e) {
-                //     e.preventDefault();
-                // });
-
-                // // if (panned) {
-                //     event.preventDefault();
-                //     event.stopPropagation();
-                //     event.stopImmediatePropagation();
-                //     downEvent.preventDefault();
-                //     downEvent.stopPropagation();
-                //     downEvent.stopImmediatePropagation();
-                //     event.cancelBubble = true;
-                //     downEvent.cancelBubble = true;
-                // // }
-                downEvent = null;
                 panning = false;
                 panzoom.handleUp(event);
-                return false;
             });
         }, 10);
     });
