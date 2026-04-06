@@ -1,6 +1,5 @@
 Functionality:
 
-- don't open links when dragging on the main screen (iPhone specific) (use "panzoom-exclude" class?)
 - move scaled image automatically based on its dimensions
 - adjustable font size
 - mobile-first warning (shown on computers only)

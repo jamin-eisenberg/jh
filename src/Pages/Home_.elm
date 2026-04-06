@@ -10,7 +10,7 @@ import Shared
 import Stories
 import Story exposing (Story, storyId)
 import Svg
-import Svg.Attributes exposing (height, points, width, x, xlinkHref, y)
+import Svg.Attributes exposing (points, x, xlinkHref, y)
 import View exposing (View)
 
 

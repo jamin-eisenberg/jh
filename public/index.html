@@ -76,10 +76,72 @@
     });
 
     app.ports.setUpPanzoom.subscribe(() => {
+        
+
+        function GetStyleClass(className)
+        {
+            for (var i=0; i< document.styleSheets.length; i++) {
+                var styleSheet = document.styleSheets[i]
+
+                var rules = styleSheet.cssRules || styleSheet.rules
+
+                for (var j=0; j<rules.length; j++) {
+                    var rule = rules[j]
+
+                    if (rule.selectorText === className) {
+                        return(rule.style)
+                    }
+                }
+            }
+
+            return 0
+        }
+        // return; TODO
         setTimeout(() => {
+            
             const jh = document.getElementById("jh");
             const minScale = 0.15;
-            Panzoom(jh, { minScale, maxScale: 2.2, startScale: minScale, startX: -1165, startY: -7273, canvas: true });
+            const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: minScale, startX: -1165, startY: -7273, canvas: true, noBind: true});
+            let downEvent = null;
+            let panning = false;
+            jh.addEventListener('pointerdown', event => {
+                panning = true;
+                downEvent = event;
+                panzoom.handleDown(event);
+            });
+            document.addEventListener('pointermove', event => {
+                if (panning) {
+                    GetStyleClass('a').pointerEvents = "none"
+                }
+                panzoom.handleMove(event);
+                // document.querySelector('a').addEventListener('click', function(e) {
+                //     e.preventDefault();
+                // });
+                
+            });
+            document.addEventListener('pointerup', event => {
+                GetStyleClass('a').pointerEvents = ""
+                // console.log(panned);
+                // console.log(event);
+                // document.querySelector('a').addEventListener('click', function(e) {
+                //     e.preventDefault();
+                // });
+
+                // // if (panned) {
+                //     event.preventDefault();
+                //     event.stopPropagation();
+                //     event.stopImmediatePropagation();
+                //     downEvent.preventDefault();
+                //     downEvent.stopPropagation();
+                //     downEvent.stopImmediatePropagation();
+                //     event.cancelBubble = true;
+                //     downEvent.cancelBubble = true;
+                // // }
+                downEvent = null;
+                panning = false;
+                panzoom.handleUp(event);
+                return false;
+            });
         }, 10);
     });
 </script>
