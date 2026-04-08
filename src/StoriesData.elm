@@ -108,7 +108,7 @@ initialStories =
               , hitbox = [ { x = 916, y = 904 }, { x = 1086, y = 902 }, { x = 1090, y = 1090 }, { x = 1019, y = 1108 }, { x = 931, y = 1114 } ]
               }
             , { title = "Escape Room in a Box"
-              , description = [ Story.text "For our fourth date, Hailey went over to Jamin's apartment for dinner and an escape room in a box. Jamin was very nervous about cooking for her because it was important to him that she thought he was a good cook. We enjoyed the meal and then did the EXIT escape game. These escape games have lots of puzzle components like those you might find in an escape room. We both enjoy them a lot, and we've done most of them at this point.", Story.text "While Jamin was waiting with Hailey at the bus stop, as he usually did, he asked if Hailey would like to be his girlfriend. She said yes! We agreed we'd pretty much known from the start that this would be a long-term relationship." ]
+              , description = [ Story.text "For our fourth date, Hailey went over to Jamin's apartment for dinner and an escape room in a box. Jamin was very nervous about cooking for her because it was important to him that she thought he was a good cook. He made pesto pasta with chicken, asparagus, and tomatoes, and she liked it! We enjoyed the meal and then did the EXIT escape game. These escape games have lots of puzzle components like those you might find in an escape room. We both enjoy them a lot, and we've done most of them at this point.", Story.text "While Jamin was waiting with Hailey at the bus stop, as he usually did, he asked if Hailey would like to be his girlfriend. She said yes! We agreed we'd pretty much known from the start that this would be a long-term relationship." ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 1627099200000)
               , dateIsApproximate = False
               , iconImageName = "icon-escape-room-in-a-box.jpg"
@@ -204,7 +204,7 @@ initialStories =
               , hitbox = [ { x = 1672, y = 71 }, { x = 1738, y = 91 }, { x = 1754, y = 157 }, { x = 1698, y = 252 }, { x = 1637, y = 342 }, { x = 1555, y = 387 }, { x = 1555, y = 286 }, { x = 1577, y = 105 } ]
               }
             , { title = "Saraceno"
-              , description = [ Story.text "Jamin's mom went to school in the area as well, and one of her favorite places to go for a fancy dinner was Ristorante Saraceno, an Italian restaurant in Boston's North End. We've very much adopted that tradition - it's our go-to spot to celebrate. Other than our first date, this was the first \"fancy\" restaurant we went to together. We spent most of the time talking about the plates and how bowl shaped a plate could be before it became a bowl." ]
+              , description = [ Story.text "Jamin's mom went to school in the area as well, and one of her favorite places to go for a fancy dinner was Ristorante Saraceno, an Italian restaurant in Boston's North End. We've very much adopted that tradition - it's our go-to spot to celebrate. Other than our first date, this was the first \"fancy\" restaurant we went to together. We spent most of the time talking about the plates and how bowl-shaped a plate could become before it could be classified as a bowl." ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 1638507600000)
               , dateIsApproximate = False
               , iconImageName = "icon-saraceno.jpg"
