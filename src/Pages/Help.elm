@@ -49,7 +49,7 @@ view firstStoryId =
                     , span [ class "material-symbols-outlined" ] [ text "resume" ]
                     , text " (resume) button on the home page."
                     ]
-                , p [] [ text "You can learn more about the making of JH in ", a [ href "TODO" ] [ text "this story" ], text "." ]
+                , p [] [ text "You can learn more about the making of JH in ", a [ href "/story/JH" ] [ text "this story" ], text "." ]
                 ]
             ]
         ]
