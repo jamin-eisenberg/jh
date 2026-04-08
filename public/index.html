@@ -52,6 +52,13 @@
     const imageHeight = 2095;
 
     let visited = Boolean(localStorage.getItem("visited") ?? false);
+    
+    const hasTouchScreen = navigator.maxTouchPoints > 0;
+
+    if (!hasTouchScreen && !localStorage.getItem("visited")) {
+        alert("You're welcome to access the JH on a computer, but just know that it'll probably look/act nicer on your phone.")
+    }
+
     localStorage.setItem("visited", true);
 
     let currentlyReadingStoryId = localStorage.getItem("currentlyReadingStoryId");

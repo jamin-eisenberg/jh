@@ -1,7 +1,5 @@
 Functionality:
 
-- mobile-first warning (shown on computers only)
-
 Content:
 
 - Sparrow 2 texts
