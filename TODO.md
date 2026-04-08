@@ -1,7 +1,6 @@
 Functionality:
 
 - move scaled image automatically based on its dimensions
-- adjustable font size
 - mobile-first warning (shown on computers only)
 
 Content:
