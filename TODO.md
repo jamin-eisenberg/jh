@@ -2,7 +2,6 @@ Functionality:
 
 Content:
 
-- add note to welcome page not to read it all at once
 - move sweater picture to top
 - put all important information before links on welcome page
 - Make it very clear that you can click on the icons. Tour? "Drag and zoom to navigate, then tap on an icon to read about it!"
