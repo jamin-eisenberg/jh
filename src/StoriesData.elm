@@ -188,7 +188,7 @@ initialStories =
               , hitbox = [ { x = 1962, y = 1267 }, { x = 1948, y = 1191 }, { x = 2036, y = 1186 }, { x = 2197, y = 1358 }, { x = 2187, y = 1452 }, { x = 2026, y = 1442 } ]
               }
             , { title = "Thrifting"
-              , description = [ Story.text "We are both pretty thrifty and love finding cheap or free things. It feels good to reduce waste while also benefitting from it. Probably our greatest victory is finding both of our bookshelves for free on the side of the road (\"Allston Christmas\"). They've served us very well. ", Story.text "We actually thrifted some things for our wedding too: the vases and the seating chart background.", Story.text "Practically every piece of furniture in our apartment came pre-owned, other than our bedroom set which is only temporary until we can get the heirloom set Jamin's grandpa made." ]
+              , description = [ Story.text "We are both pretty thrifty and love finding cheap or free things. It feels good to reduce waste while also benefitting from it. Probably our greatest victory is finding both of our bookshelves for free on the side of the road (\"Allston Christmas\"). They've served us very well. ", Story.text "We actually thrifted some things for our wedding too: the vases and the seating chart background.", Story.text "Practically every piece of furniture in our apartment came pre-owned, other than our bedroom set which is only temporary until we can get the heirloom set Jamin's grandpa made.", Story.image "board-game-shelf.jpg" ]
               , date = Date.fromPosix Time.utc (Time.millisToPosix 1634356800000)
               , dateIsApproximate = True
               , iconImageName = "icon-thrifting.jpg"

@@ -3,7 +3,6 @@ Functionality:
 Content:
 
 - Make it very clear that you can click on the icons. Tour? "Drag and zoom to navigate, then tap on an icon to read about it!"
-- shelf picture also under shelf
 
 Aesthetics:
 
