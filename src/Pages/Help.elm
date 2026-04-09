@@ -41,15 +41,20 @@ view firstStoryId =
                 [ p [] [ text "Hello and welcome to JH (pronounced \"jaitch\")! JH is a project that we (Jamin and Hailey) have been working on to display our love story and details about our life together in a fun way." ]
                 , p [] [ text "JH has two components: this website and an embroidered sign that can be found at our wedding. Both share the same set of icons, which represent stories we wish to share with you. We recommend you take some time to admire Hailey's handiwork and see what icons you recognize, then move on to reading the icons' associated stories right here! No need to read it all at once! This website will not be taken down anytime in the foreseeable future." ]
                 , p []
-                    [ text "To start, you can choose to "
+                    [ text "You can move between stories directly with the arrow buttons, and you can always pick up where you left off via the "
+                    , span [ class "material-symbols-outlined" ] [ text "resume" ]
+                    , text " (resume) button on the home page. "
+                    , text "To start, you can choose to "
                     , a [ href (Gen.Route.toHref Gen.Route.Home_) ] [ text "view the map of clickable icons" ]
                     , text " or "
                     , a [ href (Gen.Route.toHref (Gen.Route.Story__Id_ { id = firstStoryId })) ] [ text "read the stories in chronological order " ]
-                    , text ". You can move between stories directly with the arrow buttons, and you can always pick up where you left off via the "
-                    , span [ class "material-symbols-outlined" ] [ text "resume" ]
-                    , text " (resume) button on the home page."
                     ]
                 , p [] [ text "You can learn more about the making of JH in ", a [ href "/story/JH" ] [ text "this story" ], text "." ]
+                , p []
+                    [ text "You can get back to this welcome page at any time by using the "
+                    , span [ class "material-symbols-outlined" ] [ text "help" ]
+                    , text " (help) button on the home page."
+                    ]
                 ]
             ]
         ]
