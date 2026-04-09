@@ -107,7 +107,7 @@
         setTimeout(() => {
             const jh = document.getElementById("jh");
             const minScale = 0.15;
-            const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: 1,  canvas: true, noBind: true});
+            const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: 1, startX: -630, canvas: true, noBind: true});
             let panning = false;
             jh.parentNode.addEventListener('pointerdown', event => {
                 panning = true;
