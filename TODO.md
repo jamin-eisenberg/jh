@@ -2,7 +2,6 @@ Functionality:
 
 Content:
 
-- add 100% human made to the welcome page
 - add note to welcome page not to read it all at once
 - move sweater picture to top
 - put all important information before links on welcome page
