@@ -1,5 +1,6 @@
 module Pages.Home_ exposing (page)
 
+import Effect
 import ElmSpa.Page exposing (Page)
 import Gen.Route
 import Html
@@ -16,22 +17,22 @@ import View exposing (View)
 
 page : Shared.Model -> Request.With () -> Page
 page shared _ =
-    Page.element
-        { init = ( (), Shared.setUpPanzoom () )
+    Page.advanced
+        { init = ( (), Effect.batch [ Effect.fromShared Shared.VisitHomePage, Effect.fromCmd (Shared.setUpPanzoom ()) ] )
         , subscriptions = \_ -> Sub.none
-        , update = \_ model -> ( model, Cmd.none )
-        , view = \_ -> view shared.stories shared.imageBasePath shared.currentlyReadingStoryId shared.imageWidth shared.imageHeight
+        , update = \_ model -> ( model, Effect.none )
+        , view = \_ -> view shared.stories shared.imageBasePath shared.currentlyReadingStoryId shared.imageWidth shared.imageHeight (not shared.visitedHomePage)
         }
 
 
-view : Stories.Stories -> String -> String -> Int -> Int -> View Never
-view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight =
+view : Stories.Stories -> String -> String -> Int -> Int -> Bool -> View Never
+view stories imageBasePath currentlyReadingStoryId imageWidth imageHeight firstVisit =
     { title = "JH"
     , body =
         [ Html.div [ Html.Attributes.class "mw-100" ]
             [ Html.div [ Html.Attributes.id "jh", Html.Attributes.width imageWidth, Html.Attributes.height imageHeight ]
                 [ Svg.svg [ Svg.Attributes.width (String.fromInt imageWidth ++ "px"), Svg.Attributes.height (String.fromInt imageHeight ++ "px") ]
-                    (Svg.image [ xlinkHref (imageBasePath ++ Shared.jhImageName) ] []
+                    (Svg.image [ xlinkHref (imageBasePath ++ Shared.jhImageName firstVisit) ] []
                         :: Stories.map viewaabb stories
                     )
                 ]

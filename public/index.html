@@ -52,6 +52,7 @@
     const imageHeight = 2095;
 
     let visited = Boolean(localStorage.getItem("visited") ?? false);
+    let visitedHomePage = Boolean(localStorage.getItem("visitedHomePage") ?? false);
     
     const hasTouchScreen = navigator.maxTouchPoints > 0;
 
@@ -70,14 +71,17 @@
             imageBasePath: "/images/",
             currentlyReadingStoryId,
             imageWidth,
-            imageHeight
+            imageHeight,
+            visitedHomePage
         }
     });
 
     app.ports.saveToLocalStorage.subscribe((obj) => {
         for (const key in obj) {
             if (obj.hasOwnProperty(key)) {
-                localStorage.setItem(key, obj[key]);
+                if (obj[key] !== null) {
+                    localStorage.setItem(key, obj[key]);
+                }
             }
         }
     });
@@ -107,7 +111,7 @@
         setTimeout(() => {
             const jh = document.getElementById("jh");
             const minScale = 0.15;
-            const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: 1, startX: -630, canvas: true, noBind: true});
+            const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: 1, startX: -1338, startY: -497, canvas: true, noBind: true});
             let panning = false;
             jh.parentNode.addEventListener('pointerdown', event => {
                 panning = true;
@@ -126,6 +130,7 @@
             });
         }, 10);
     });
+    console.log(app);
 </script>
 
 </html>

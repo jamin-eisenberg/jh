@@ -69,7 +69,7 @@ view imageBasePath maybeStoryContext totalStories imageWidth imageHeight =
                       in
                       div [ class "d-flex flex-row align-items-center w-100 p-2" ]
                         [ div [ style "height" (String.fromInt thumbnailHeight ++ "px"), style "margin-right" "1em" ]
-                            [ a [ href (Gen.Route.toHref Gen.Route.Home_) ] [ img [ src (imageBasePath ++ Shared.jhImageName), class "w-100 h-100" ] [] ]
+                            [ a [ href (Gen.Route.toHref Gen.Route.Home_) ] [ img [ src (imageBasePath ++ Shared.jhImageName False), class "w-100 h-100" ] [] ]
                             , div
                                 [ style "background-color" "red"
                                 , style "position" "absolute"

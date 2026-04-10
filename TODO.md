@@ -1,8 +1,8 @@
 Functionality:
 
-Content:
+- save zoom and pan amounts
 
-- Make it very clear that you can click on the icons. Tour? "Drag and zoom to navigate, then tap on an icon to read about it!"
+Content:
 
 Aesthetics:
 
@@ -14,6 +14,7 @@ Aesthetics:
 - JH dimensions should not change per story
 - Increase margins on text pages (don't forget to change date margins equally)
 - star or you are here instead of red square
+- favicon
 
 Final checks:
 

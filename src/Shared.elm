@@ -17,7 +17,7 @@ import StoriesData
 import Story exposing (storyId)
 
 
-port saveToLocalStorage : { currentlyReadingStoryId : String } -> Cmd msg
+port saveToLocalStorage : { currentlyReadingStoryId : Maybe String, visitedHomePage : Maybe Bool } -> Cmd msg
 
 
 port setUpPanzoom : () -> Cmd msg
@@ -29,6 +29,7 @@ type alias Flags =
     , currentlyReadingStoryId : Maybe String
     , imageWidth : Int
     , imageHeight : Int
+    , visitedHomePage : Bool
     }
 
 
@@ -38,19 +39,25 @@ type alias Model =
     , currentlyReadingStoryId : String
     , imageWidth : Int
     , imageHeight : Int
+    , visitedHomePage : Bool
     }
 
 
 type Msg
     = ReadingNewStory String
+    | VisitHomePage
 
 
-jhImageName =
-    "jh.png"
+jhImageName firstVisit =
+    if firstVisit then
+        "jh-tour.png"
+
+    else
+        "jh.png"
 
 
 init : Request -> Flags -> ( Model, Cmd Msg )
-init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHeight } =
+init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHeight, visitedHomePage } =
     ( { stories = StoriesData.initialStories
       , imageBasePath = imageBasePath
       , currentlyReadingStoryId =
@@ -62,6 +69,7 @@ init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHei
                     )
       , imageWidth = imageWidth
       , imageHeight = imageHeight
+      , visitedHomePage = visitedHomePage
       }
     , if not visited && req.route == Gen.Route.Home_ then
         Request.replaceRoute Gen.Route.Help req
@@ -75,7 +83,10 @@ update : Request -> Msg -> Model -> ( Model, Cmd Msg )
 update _ msg model =
     case msg of
         ReadingNewStory newStoryId ->
-            ( { model | currentlyReadingStoryId = newStoryId }, saveToLocalStorage { currentlyReadingStoryId = newStoryId } )
+            ( { model | currentlyReadingStoryId = newStoryId }, saveToLocalStorage { currentlyReadingStoryId = Just newStoryId, visitedHomePage = Nothing } )
+
+        VisitHomePage ->
+            ( model, saveToLocalStorage { visitedHomePage = Just True, currentlyReadingStoryId = Nothing } )
 
 
 subscriptions : Request -> Model -> Sub Msg
