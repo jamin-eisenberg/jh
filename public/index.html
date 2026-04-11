@@ -108,10 +108,12 @@
             return 0
         }
 
+        const pan = JSON.parse(localStorage.getItem("pan") ?? "null") ?? {x: -1338, y: -497};
+        const scale = localStorage.getItem("scale") ?? 1;
         setTimeout(() => {
             const jh = document.getElementById("jh");
             const minScale = 0.15;
-            const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: 1, startX: -1338, startY: -497, canvas: true, noBind: true});
+            const panzoom = Panzoom(jh, { minScale, maxScale: 2.2, startScale: scale, startX: pan.x, startY: pan.y, canvas: true, noBind: true});
             let panning = false;
             jh.parentNode.addEventListener('pointerdown', event => {
                 panning = true;
@@ -127,10 +129,11 @@
                 GetStyleClass('a').pointerEvents = ""
                 panning = false;
                 panzoom.handleUp(event);
+                localStorage.setItem("pan", JSON.stringify(panzoom.getPan()));
+                localStorage.setItem("scale", panzoom.getScale());
             });
         }, 10);
     });
-    console.log(app);
 </script>
 
 </html>

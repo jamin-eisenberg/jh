@@ -1,6 +1,5 @@
 Functionality:
 
-- save zoom and pan amounts
 - set text size
 
 Content:
