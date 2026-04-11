@@ -66,7 +66,6 @@ viewaabb story =
                     |> List.map (\{ x, y } -> String.fromInt x ++ "," ++ String.fromInt y)
                     |> String.join " "
                 )
-            , Svg.Attributes.stroke "red"
             , Svg.Attributes.fillOpacity "0"
             ]
             []

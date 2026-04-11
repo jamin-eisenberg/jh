@@ -1,6 +1,7 @@
 Functionality:
 
 - save zoom and pan amounts
+- set text size
 
 Content:
 
@@ -18,7 +19,6 @@ Aesthetics:
 
 Final checks:
 
-- remove hitboxes
 - check that all referenced icons and images are present in images/ (or on Cloudinary)
 - load test website (PAUSE LOGROCKET)
 - pay for higher website capacity for the month
