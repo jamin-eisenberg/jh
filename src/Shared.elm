@@ -17,7 +17,14 @@ import StoriesData
 import Story exposing (storyId)
 
 
-port saveToLocalStorage : { currentlyReadingStoryId : Maybe String, visitedHomePage : Maybe Bool } -> Cmd msg
+type alias LocalStorage =
+    { currentlyReadingStoryId : Maybe String, visitedHomePage : Maybe Bool, fontSize : Maybe Int }
+
+
+port saveToLocalStorage : LocalStorage -> Cmd msg
+
+
+port setFontSize : Int -> Cmd msg
 
 
 port setUpPanzoom : () -> Cmd msg
@@ -30,6 +37,7 @@ type alias Flags =
     , imageWidth : Int
     , imageHeight : Int
     , visitedHomePage : Bool
+    , fontSize : Int
     }
 
 
@@ -40,12 +48,15 @@ type alias Model =
     , imageWidth : Int
     , imageHeight : Int
     , visitedHomePage : Bool
+    , fontSize : Int
     }
 
 
 type Msg
     = ReadingNewStory String
     | VisitHomePage
+    | IncrementFontSize
+    | DecrementFontSize
 
 
 jhImageName firstVisit =
@@ -57,7 +68,7 @@ jhImageName firstVisit =
 
 
 init : Request -> Flags -> ( Model, Cmd Msg )
-init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHeight, visitedHomePage } =
+init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHeight, visitedHomePage, fontSize } =
     ( { stories = StoriesData.initialStories
       , imageBasePath = imageBasePath
       , currentlyReadingStoryId =
@@ -70,6 +81,7 @@ init req { imageBasePath, visited, currentlyReadingStoryId, imageWidth, imageHei
       , imageWidth = imageWidth
       , imageHeight = imageHeight
       , visitedHomePage = visitedHomePage
+      , fontSize = fontSize
       }
     , if not visited && req.route == Gen.Route.Home_ then
         Request.replaceRoute Gen.Route.Help req
@@ -83,10 +95,29 @@ update : Request -> Msg -> Model -> ( Model, Cmd Msg )
 update _ msg model =
     case msg of
         ReadingNewStory newStoryId ->
-            ( { model | currentlyReadingStoryId = newStoryId }, saveToLocalStorage { currentlyReadingStoryId = Just newStoryId, visitedHomePage = Nothing } )
+            ( { model | currentlyReadingStoryId = newStoryId }, saveToLocalStorage { defaultLocalStorage | currentlyReadingStoryId = Just newStoryId } )
 
         VisitHomePage ->
-            ( model, saveToLocalStorage { visitedHomePage = Just True, currentlyReadingStoryId = Nothing } )
+            ( model, saveToLocalStorage { defaultLocalStorage | visitedHomePage = Just True } )
+
+        IncrementFontSize ->
+            let
+                newFontSize =
+                    model.fontSize + 1
+            in
+            ( { model | fontSize = newFontSize }, Cmd.batch [ setFontSize newFontSize, saveToLocalStorage { defaultLocalStorage | fontSize = Just newFontSize } ] )
+
+        DecrementFontSize ->
+            let
+                newFontSize =
+                    model.fontSize - 1
+            in
+            ( { model | fontSize = newFontSize }, Cmd.batch [ setFontSize newFontSize, saveToLocalStorage { defaultLocalStorage | fontSize = Just newFontSize } ] )
+
+
+defaultLocalStorage : LocalStorage
+defaultLocalStorage =
+    { currentlyReadingStoryId = Nothing, visitedHomePage = Nothing, fontSize = Nothing }
 
 
 subscriptions : Request -> Model -> Sub Msg

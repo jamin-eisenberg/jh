@@ -1,9 +1,11 @@
-module Pages.Help exposing (page)
+module Pages.Help exposing (Model, Msg, page)
 
+import Effect
 import Gen.Params.Help exposing (Params)
 import Gen.Route
-import Html exposing (a, div, hr, p, span, text)
+import Html exposing (a, button, div, hr, p, span, text)
 import Html.Attributes exposing (class, href, style)
+import Html.Events exposing (onClick)
 import Page exposing (Page)
 import Request
 import Shared
@@ -12,20 +14,41 @@ import Story exposing (storyId)
 import View exposing (View)
 
 
-page : Shared.Model -> Request.With Params -> Page
+type alias Model =
+    {}
+
+
+type Msg
+    = IncrementFontSize
+    | DecrementFontSize
+
+
+page : Shared.Model -> Request.With Params -> Page.With Model Msg
 page shared _ =
-    Page.static
-        { view =
-            view
-                (firstStory shared.stories
-                    |> Maybe.map storyId
-                    |> Maybe.withDefault ""
-                )
+    Page.advanced
+        { init = ( {}, Effect.none )
+        , subscriptions = \_ -> Sub.none
+        , update =
+            \msg _ ->
+                case msg of
+                    IncrementFontSize ->
+                        ( {}, Effect.fromShared Shared.IncrementFontSize )
+
+                    DecrementFontSize ->
+                        ( {}, Effect.fromShared Shared.DecrementFontSize )
+        , view =
+            \_ ->
+                view
+                    (firstStory shared.stories
+                        |> Maybe.map storyId
+                        |> Maybe.withDefault ""
+                    )
+                    shared.fontSize
         }
 
 
-view : String -> View msg
-view firstStoryId =
+view : String -> Int -> View Msg
+view firstStoryId fontSize =
     { title = "JH - Help"
     , body =
         [ div [ class "sticky-top" ]
@@ -55,6 +78,10 @@ view firstStoryId =
                     , span [ class "material-symbols-outlined" ] [ text "help" ]
                     , text " (help) button on the home page."
                     ]
+                , p [] [ text "You can set the font size below:" ]
+                , button [ class "btn btn-primary", onClick IncrementFontSize ] [ text "+" ]
+                , p [ class "my-1" ] [ text (String.fromInt fontSize) ]
+                , button [ class "btn btn-primary", onClick DecrementFontSize ] [ text "-" ]
                 ]
             ]
         ]

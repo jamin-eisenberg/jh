@@ -17,10 +17,6 @@
         body {
             width: 100%;
             height: 100%;
-            font-size: 110%;
-        }
-
-        body {
             padding: 0;
             margin: 0;
             overscroll-behavior-y: none;
@@ -53,6 +49,8 @@
 
     let visited = Boolean(localStorage.getItem("visited") ?? false);
     let visitedHomePage = Boolean(localStorage.getItem("visitedHomePage") ?? false);
+    let fontSize = parseInt(localStorage.getItem("fontSize") ?? "19");
+    document.documentElement.style.fontSize = fontSize + "px";
     
     const hasTouchScreen = navigator.maxTouchPoints > 0;
 
@@ -72,8 +70,13 @@
             currentlyReadingStoryId,
             imageWidth,
             imageHeight,
-            visitedHomePage
+            visitedHomePage,
+            fontSize
         }
+    });
+
+    app.ports.setFontSize.subscribe((newFontSize) => {
+        document.documentElement.style.fontSize = newFontSize + "px";
     });
 
     app.ports.saveToLocalStorage.subscribe((obj) => {
