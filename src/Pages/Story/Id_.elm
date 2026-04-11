@@ -21,11 +21,11 @@ page shared req =
         { init = ( (), Effect.fromShared (Shared.ReadingNewStory req.params.id) )
         , update = \_ model -> ( model, Effect.none )
         , subscriptions = \_ -> Sub.none
-        , view = \_ -> view shared.imageBasePath (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories) shared.imageWidth shared.imageHeight
+        , view = \_ -> view shared.imageBasePath (Stories.firstStory shared.stories) (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories) shared.imageWidth shared.imageHeight
         }
 
 
-view imageBasePath maybeStoryContext totalStories imageWidth imageHeight =
+view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHeight =
     case maybeStoryContext of
         Nothing ->
             NotFound.view
@@ -105,18 +105,19 @@ view imageBasePath maybeStoryContext totalStories imageWidth imageHeight =
                 , div [ class "fixed-bottom bg-white" ]
                     [ hr [ class "mx-2 mt-2 mb-0" ] []
                     , div [ class "d-flex flex-row align-items-center w-100 p-2 fs-2" ]
-                        [ viewStoryLink previous "end" (span [ class "material-symbols-outlined" ] [ text "arrow_left_alt" ])
+                        [ viewStoryLink firstStory "start" "shrink" (span [ class "material-symbols-outlined" ] [ text "first_page" ])
+                        , viewStoryLink previous "end" "grow" (span [ class "material-symbols-outlined" ] [ text "arrow_left_alt" ])
                         , p [ class "mx-2 my-0 text-secondary flex-shrink-1" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
-                        , viewStoryLink next "start" (span [ class "material-symbols-outlined" ] [ text "arrow_right_alt" ])
+                        , viewStoryLink next "start" "grow" (span [ class "material-symbols-outlined" ] [ text "arrow_right_alt" ])
                         ]
                     ]
                 ]
             }
 
 
-viewStoryLink maybeStory justify child =
+viewStoryLink maybeStory justify stretch child =
     a
-        ([ class ("d-flex flex-grow-1 my-0 link-secondary link-underline link-underline-opacity-0 justify-content-" ++ justify)
+        ([ class ("d-flex flex-" ++ stretch ++ "-1 my-0 link-secondary link-underline link-underline-opacity-0 justify-content-" ++ justify)
          , style "flex-basis" "0"
          ]
             ++ (case maybeStory of

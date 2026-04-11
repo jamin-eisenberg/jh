@@ -23,6 +23,5 @@ Final checks:
 
 Further Ideas:
 
-- skip to beginning button
 - maybe like a "reveal" button for the story?
 - timeline?
