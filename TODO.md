@@ -1,4 +1,6 @@
 Functionality:
+- font size change broke bottom scroll buffer 
+- instead of tilde, started around month
 
 Content:
 
@@ -24,4 +26,4 @@ Final checks:
 Further Ideas:
 
 - maybe like a "reveal" button for the story?
-- timeline?
+- progress bar (shaped like a timeline)
