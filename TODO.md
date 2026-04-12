@@ -1,6 +1,6 @@
 Functionality:
+
 - font size change broke bottom scroll buffer 
-- instead of tilde, started around month
 
 Content:
 
