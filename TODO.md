@@ -4,6 +4,8 @@ Functionality:
 
 Content:
 
+- board game and movie pics
+
 Aesthetics:
 
 - scroll overlays text on title (iPhone specific)
