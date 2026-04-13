@@ -25,3 +25,6 @@ Further Ideas:
 
 - maybe like a "reveal" button for the story?
 - timeline?
+
+- Aidan's scroll cut off and after the vutoff was the previous page
+- "we didn't hold hands..."
