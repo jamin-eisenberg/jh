@@ -91,12 +91,11 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                         [ text
                             ("Date: "
                                 ++ (if story.dateIsApproximate then
-                                        "~"
+                                        "Started around " ++ Date.format "MMMM, y" story.date
 
                                     else
-                                        ""
+                                        Date.format "MMMM ddd, y" story.date
                                    )
-                                ++ Date.format "MMMM ddd, y" story.date
                             )
                         ]
                     , Story.viewDescriptionContent imageBasePath story.description

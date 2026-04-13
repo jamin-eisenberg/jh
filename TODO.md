@@ -1,6 +1,10 @@
 Functionality:
 
+- font size change broke bottom scroll buffer
+
 Content:
+
+- board game and movie pics
 
 Aesthetics:
 
@@ -28,3 +32,4 @@ Further Ideas:
 
 - Aidan's scroll cut off and after the vutoff was the previous page
 - "we didn't hold hands..."
+- progress bar (shaped like a timeline)
