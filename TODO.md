@@ -1,12 +1,12 @@
 Functionality:
 
-- Aidan's scroll cut off and after the cutoff was the previous page
+- Aidan's scroll cut off and after the cutoff was the previous
+  - one time mobile Safari bug? doesn't even appear in LogRocket
 
 Content:
 
 Aesthetics:
 
-- scroll overlays text on title (iPhone specific)
 - AABBs look off on the minimap
 - Account for screen boundaries (Hailey's phone and iPhone)
 - reset scroll per page
@@ -20,7 +20,7 @@ Final checks:
 
 - check that all referenced icons and images are present in images/ (or on Cloudinary)
 - load test website (PAUSE LOGROCKET)
-- pay for higher website capacity for the month
+- pay for higher website capacity for the month and potentially higher cloudinary?
 
 Further Ideas:
 

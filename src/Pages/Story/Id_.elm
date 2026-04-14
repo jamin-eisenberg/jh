@@ -43,7 +43,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
             in
             { title = "JH - " ++ story.title
             , body =
-                [ div [ class "sticky-top" ]
+                [ div [ class "sticky-top", style "background-color" "white" ]
                     [ div [] [] -- panzoom seems to affect the first child div (nevermind that we're on a different page now), so let it affect this empty one
                     , let
                         thumbnailHeight =
