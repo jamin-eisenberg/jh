@@ -82,6 +82,7 @@ view firstStoryId fontSize =
                 , button [ class "btn btn-primary", onClick IncrementFontSize ] [ text "+" ]
                 , p [ class "my-1" ] [ text (String.fromInt fontSize) ]
                 , button [ class "btn btn-primary", onClick DecrementFontSize ] [ text "-" ]
+                , div [ style "height" (String.fromInt fontSize ++ "em"), class "w-100" ] []
                 ]
             ]
         ]

@@ -15,7 +15,6 @@ Aesthetics:
 - Increase margins on text pages (don't forget to change date margins equally)
 - star or you are here instead of red square
 - favicon
-- fix help page scrolling
 
 Final checks:
 
