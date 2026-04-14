@@ -8,7 +8,6 @@ Content:
 Aesthetics:
 
 - Account for screen boundaries (Hailey's phone and iPhone) (HOPEFULLY FIXED, CHECK)
-- favicon
 
 Final checks:
 
