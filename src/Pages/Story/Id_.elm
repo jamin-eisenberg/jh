@@ -21,11 +21,11 @@ page shared req =
         { init = ( (), Effect.fromShared (Shared.ReadingNewStory req.params.id) )
         , update = \_ model -> ( model, Effect.none )
         , subscriptions = \_ -> Sub.none
-        , view = \_ -> view shared.imageBasePath (Stories.firstStory shared.stories) (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories) shared.imageWidth shared.imageHeight
+        , view = \_ -> view shared.imageBasePath (Stories.firstStory shared.stories) (Stories.selectStoryById req.params.id shared.stories) (Stories.length shared.stories) shared.imageWidth shared.imageHeight shared.fontSize
         }
 
 
-view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHeight =
+view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHeight fontSize =
     case maybeStoryContext of
         Nothing ->
             NotFound.view
@@ -99,7 +99,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                             )
                         ]
                     , Story.viewDescriptionContent imageBasePath story.description
-                    , div [ style "height" "8em", class "w-100" ] []
+                    , div [ style "height" (String.fromInt (fontSize // 2) ++ "em"), class "w-100" ] []
                     ]
                 , div [ class "fixed-bottom bg-white" ]
                     [ hr [ class "mx-2 mt-2 mb-0" ] []

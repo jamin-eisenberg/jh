@@ -1,6 +1,5 @@
 Functionality:
 
-- font size change broke bottom scroll buffer
 - Aidan's scroll cut off and after the cutoff was the previous page
 
 Content:
