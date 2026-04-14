@@ -1,6 +1,6 @@
 Functionality:
 
-- font size change broke bottom scroll buffer 
+- font size change broke bottom scroll buffer
 
 Content:
 
@@ -28,4 +28,8 @@ Final checks:
 Further Ideas:
 
 - maybe like a "reveal" button for the story?
+- timeline?
+
+- Aidan's scroll cut off and after the vutoff was the previous page
+- "we didn't hold hands..."
 - progress bar (shaped like a timeline)
