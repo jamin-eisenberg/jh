@@ -7,10 +7,8 @@ Content:
 
 Aesthetics:
 
-- AABBs look off on the minimap
 - Account for screen boundaries (Hailey's phone and iPhone)
 - reset scroll per page
-- JH dimensions should not change per story
 - star or you are here instead of red square
 - favicon
 

@@ -69,7 +69,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                       in
                       div [ class "d-flex flex-row align-items-center w-100 p-2" ]
                         [ div [ style "height" (String.fromInt thumbnailHeight ++ "px"), style "margin-right" "1em" ]
-                            [ a [ href (Gen.Route.toHref Gen.Route.Home_) ] [ img [ src (imageBasePath ++ Shared.jhImageName False), class "w-100 h-100" ] [] ]
+                            [ a [ href (Gen.Route.toHref Gen.Route.Home_) ] [ img [ src (imageBasePath ++ Shared.jhImageName False), class "h-100" ] [] ]
                             , div
                                 [ style "background-color" "red"
                                 , style "position" "absolute"
@@ -80,7 +80,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                                 ]
                                 []
                             ]
-                        , img [ src (imageBasePath ++ story.iconImageName), style "height" (String.fromInt thumbnailHeight ++ "px"), style "margin-right" "1em" ] []
+                        , img [ src (imageBasePath ++ story.iconImageName), style "height" (String.fromInt thumbnailHeight ++ "px") ] []
                         , a [ class "btn-close ms-auto", href (Gen.Route.toHref Gen.Route.Home_) ] []
                         ]
                     , hr [ class "mx-2 mt-0 mb-2" ] []
