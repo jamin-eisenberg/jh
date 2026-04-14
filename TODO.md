@@ -10,9 +10,7 @@ Aesthetics:
 - AABBs look off on the minimap
 - Account for screen boundaries (Hailey's phone and iPhone)
 - reset scroll per page
-- Make images sticky, but not title text
 - JH dimensions should not change per story
-- Increase margins on text pages (don't forget to change date margins equally)
 - star or you are here instead of red square
 - favicon
 

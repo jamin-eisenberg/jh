@@ -5,7 +5,7 @@ import Date
 import Effect
 import Gen.Params.Story.Id_ exposing (Params)
 import Gen.Route
-import Html exposing (a, div, hr, img, p, span, text)
+import Html exposing (a, div, h1, h2, hr, img, p, span, text)
 import Html.Attributes exposing (class, href, src, style)
 import Page exposing (Page)
 import Pages.NotFound as NotFound
@@ -47,7 +47,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                     [ div [] [] -- panzoom seems to affect the first child div (nevermind that we're on a different page now), so let it affect this empty one
                     , let
                         thumbnailHeight =
-                            48
+                            72
 
                         thumbnailWidth =
                             (toFloat imageWidth / toFloat imageHeight) * thumbnailHeight
@@ -81,13 +81,13 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                                 []
                             ]
                         , img [ src (imageBasePath ++ story.iconImageName), style "height" (String.fromInt thumbnailHeight ++ "px"), style "margin-right" "1em" ] []
-                        , p [ class "fs-1 m-0" ] [ text story.title ]
                         , a [ class "btn-close ms-auto", href (Gen.Route.toHref Gen.Route.Home_) ] []
                         ]
                     , hr [ class "mx-2 mt-0 mb-2" ] []
                     ]
                 , div [ style "overflow" "auto", class "h-100" ]
-                    [ p [ class "px-2 mb-2" ]
+                    [ h1 [ class "m-0 px-2 mb-2" ] [ text story.title ]
+                    , p [ class "px-2 mb-2" ]
                         [ text
                             ("Date: "
                                 ++ (if story.dateIsApproximate then
