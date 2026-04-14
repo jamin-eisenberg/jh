@@ -99,7 +99,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                             )
                         ]
                     , Story.viewDescriptionContent imageBasePath story.description
-                    , div [ style "height" (String.fromInt (fontSize // 2) ++ "em"), class "w-100" ] []
+                    , div [ style "height" (String.fromInt fontSize ++ "em"), class "w-100" ] []
                     ]
                 , div [ class "fixed-bottom bg-white" ]
                     [ hr [ class "mx-2 mt-2 mb-0" ] []
