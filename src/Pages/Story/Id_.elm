@@ -103,7 +103,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                     ]
                 , div [ class "fixed-bottom bg-white" ]
                     [ hr [ class "mx-2 mt-2 mb-0" ] []
-                    , div [ class "d-flex flex-row align-items-center w-100 p-2 fs-2" ]
+                    , div [ class "d-flex flex-row align-items-stretch w-100 p-2 fs-2" ]
                         [ viewStoryLink firstStory "start" "shrink" (span [ class "material-symbols-outlined" ] [ text "first_page" ])
                         , viewStoryLink previous "end" "grow" (span [ class "material-symbols-outlined" ] [ text "arrow_left_alt" ])
                         , p [ class "mx-2 my-0 text-secondary flex-shrink-1" ] [ text (String.fromInt (storyIndex + 1) ++ " / " ++ String.fromInt totalStories) ]
@@ -116,7 +116,7 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
 
 viewStoryLink maybeStory justify stretch child =
     a
-        ([ class ("d-flex flex-" ++ stretch ++ "-1 my-0 link-secondary link-underline link-underline-opacity-0 justify-content-" ++ justify)
+        ([ class ("d-flex flex-" ++ stretch ++ "-1 my-0 align-items-center link-secondary link-underline link-underline-opacity-0 justify-content-" ++ justify)
          , style "flex-basis" "0"
          ]
             ++ (case maybeStory of
