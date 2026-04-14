@@ -24,6 +24,9 @@ type alias LocalStorage =
 port saveToLocalStorage : LocalStorage -> Cmd msg
 
 
+port resetStoryScroll : () -> Cmd msg
+
+
 port setFontSize : Int -> Cmd msg
 
 
@@ -95,7 +98,12 @@ update : Request -> Msg -> Model -> ( Model, Cmd Msg )
 update _ msg model =
     case msg of
         ReadingNewStory newStoryId ->
-            ( { model | currentlyReadingStoryId = newStoryId }, saveToLocalStorage { defaultLocalStorage | currentlyReadingStoryId = Just newStoryId } )
+            ( { model | currentlyReadingStoryId = newStoryId }
+            , Cmd.batch
+                [ saveToLocalStorage { defaultLocalStorage | currentlyReadingStoryId = Just newStoryId }
+                , resetStoryScroll ()
+                ]
+            )
 
         VisitHomePage ->
             ( model, saveToLocalStorage { defaultLocalStorage | visitedHomePage = Just True } )

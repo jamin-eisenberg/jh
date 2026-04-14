@@ -80,6 +80,10 @@
         document.documentElement.style.fontSize = newFontSize + "px";
     });
 
+    app.ports.resetStoryScroll.subscribe(() => {
+        document.getElementById('story-body').scrollTop = 0;
+    });
+
     app.ports.saveToLocalStorage.subscribe((obj) => {
         for (const key in obj) {
             if (obj.hasOwnProperty(key)) {
