@@ -8,7 +8,6 @@ Content:
 Aesthetics:
 
 - Account for screen boundaries (Hailey's phone and iPhone) (HOPEFULLY FIXED, CHECK)
-- star or you are here instead of red square
 - favicon
 
 Final checks:

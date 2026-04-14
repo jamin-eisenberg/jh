@@ -52,29 +52,19 @@ view imageBasePath firstStory maybeStoryContext totalStories imageWidth imageHei
                         thumbnailWidth =
                             (toFloat imageWidth / toFloat imageHeight) * thumbnailHeight
 
-                        minimapBoxWidth =
-                            floor (thumbnailWidth * (toFloat story.aabb.width / toFloat imageWidth))
-
-                        minimapBoxHeight =
-                            floor (thumbnailHeight * (toFloat story.aabb.height / toFloat imageHeight))
-
                         minimapBoxX =
-                            floor (9 + toFloat story.aabb.x * (thumbnailWidth / toFloat imageWidth))
+                            floor (6 + toFloat story.aabb.x * (thumbnailWidth / toFloat imageWidth))
 
                         minimapBoxY =
-                            floor (9 + toFloat story.aabb.y * (thumbnailHeight / toFloat imageHeight))
-
-                        visualExpansionFactor =
-                            2
+                            floor (-7 + toFloat story.aabb.y * (thumbnailHeight / toFloat imageHeight))
                       in
                       div [ class "d-flex flex-row align-items-center w-100 p-2" ]
                         [ div [ style "height" (String.fromInt thumbnailHeight ++ "px"), style "margin-right" "1em" ]
                             [ a [ href (Gen.Route.toHref Gen.Route.Home_) ] [ img [ src (imageBasePath ++ Shared.jhImageName False), class "h-100" ] [] ]
-                            , div
-                                [ style "background-color" "red"
+                            , img
+                                [ src (imageBasePath ++ "you-are-here.png")
                                 , style "position" "absolute"
-                                , style "width" (String.fromInt (minimapBoxWidth * visualExpansionFactor) ++ "px")
-                                , style "height" (String.fromInt (minimapBoxHeight * visualExpansionFactor) ++ "px")
+                                , style "width" "15px" -- 55,35 to 53,19
                                 , style "left" (String.fromInt minimapBoxX ++ "px")
                                 , style "top" (String.fromInt minimapBoxY ++ "px")
                                 ]
