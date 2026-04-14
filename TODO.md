@@ -5,8 +5,6 @@ Functionality:
 
 Content:
 
-- board game and movie pics
-
 Aesthetics:
 
 - scroll overlays text on title (iPhone specific)
@@ -29,5 +27,4 @@ Final checks:
 Further Ideas:
 
 - maybe like a "reveal" button for the story?
-- timeline?
 - progress bar (shaped like a timeline)
