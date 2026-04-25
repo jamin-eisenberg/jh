@@ -7,8 +7,6 @@ Content:
 
 Aesthetics:
 
-- Account for screen boundaries (Hailey's phone and iPhone) (HOPEFULLY FIXED, CHECK)
-
 Final checks:
 
 - check that all referenced icons and images are present in images/ (or on Cloudinary)
